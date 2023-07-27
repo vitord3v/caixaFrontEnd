@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
 import { textColor } from "../colors/colors";
 import chest from '../img/chest.png';
+import Cabeçalho from "../components/Cabecalho";
+import Sidebar from "../components/Sidebar";
 
 export default function GamePage()
 {
@@ -8,6 +10,8 @@ export default function GamePage()
     
     return(
         <PageContainer className="sajddhaksjdh">
+            <Cabeçalho />
+            <Sidebar />
             <div className="your-bets">
                 <h1>Suas Apostas</h1>
                 <h2>
