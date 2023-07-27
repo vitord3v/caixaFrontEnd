@@ -1,14 +1,20 @@
+import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../styles/resetStyle";
+import { Hydrate } from "next/app";
 
-function MyApp({ Component, pageProps }) {
-  
+export const theme2 = {}
+
+export default function MyApp({ Component, pageProps }) {
+ 
   return (
     <>
-    <GlobalStyle/>
-      <Component {...pageProps} />
-      </>
+      <GlobalStyle />
+      <ThemeProvider theme={theme2}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+      </ThemeProvider>
+    </>
   );
 
 }
-
-export default MyApp
