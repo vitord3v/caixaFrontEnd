@@ -1,75 +1,75 @@
-import { styled } from "styled-components";
-import { textColor } from "../colors/colors";
-import chest from '../img/chest.png';
+import Image from "next/image";
+import { styled } from 'styled-components'
+import OpenChest from "../components/OpenChestContainer";
 
-export default function GamePage()
-{
-    const numbersAmount = 80;
+const Container = styled.div`
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: black;
+
+    div {
+        p {
+            color: white;
+        }
+    }
+
+`
+
+const BetContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+        margin-bottom: 2rem;
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 64px;
+    }
+
     
+`
+
+const ChestContainer = styled.div`
+    padding: 1rem;
+    border:1px solid white;
+    border-radius: 40px;
+    max-width:650px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    p {
+        
+    }
+`
+
+export default function GamePage() {
     return(
-        <PageContainer className="sajddhaksjdh">
-            <div className="your-bets">
-                <h1>Suas Apostas</h1>
-                <h2>
-                    0/10
-                </h2>
-            </div>
-            <div className="tooltip">
-                <h1>
-                    Faça 10 apostas no timemania e abra um baú com NFT’s exclusivos!
-                </h1>
-                <img src={chest} alt="Baú de ouro para abrir sua caixa" />
-            </div>
-            <NumbersContainer>
-            <div className="info">
-                <h1>Sorteio : 3090</h1>
-                <h2>Data 27/08</h2>
-            </div>
-            <div className="numbers">
-                {Array.from(numbersAmount).map((num,index) =>{
-                    return <NumberComponent number={index}/>
-                })}
-            </div>
-            </NumbersContainer>
+        <>
+        <Container>
+            <BetContainer>
+                <div>
+                    <h1>Suas Apostas</h1>
+                    <p>
+                        0/10
+                    </p>
+                </div>
+            </BetContainer>
             
-        </PageContainer>
+            <ChestContainer>
+                <p>
+                    Faça 10 apostas no timemania e abra um baú com NFT’s exclusivos!
+                </p>
+                <Image src='/chest.png' width='169' height='124' alt="Baú de ouro para abrir sua caixa" />
+            </ChestContainer>
+            
+        </Container>
+        <OpenChest />
+        </>
     );
 }
 
-const NumbersContainer = styled.nav`
-
-
-
-`;
-
-
-const PageContainer = styled.main`
-    .your-bets{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 20px;
-        h1{
-            color: ${textColor};
-            font-family: Poppins;
-            font-size: 32px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-        }
-        h2{
-            color: ${textColor};
-            font-family: Poppins;
-            font-size: 64px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-        }
-    }
-
-    .tooltip{
-        display: flex;
-        gap:30px;
-    }
-`;
