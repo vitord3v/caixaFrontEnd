@@ -4,6 +4,8 @@ import chest from '../img/chest.png';
 
 export default function GamePage()
 {
+    const numbersAmount = 80;
+    
     return(
         <PageContainer className="sajddhaksjdh">
             <div className="your-bets">
@@ -18,10 +20,27 @@ export default function GamePage()
                 </h1>
                 <img src={chest} alt="Baú de ouro para abrir sua caixa" />
             </div>
+            <NumbersContainer>
+            <div className="info">
+                <h1>Sorteio : 3090</h1>
+                <h2>Data 27/08</h2>
+            </div>
+            <div className="numbers">
+                {Array.from(numbersAmount).map((num,index) =>{
+                    return <NumberComponent number={index}/>
+                })}
+            </div>
+            </NumbersContainer>
+            
         </PageContainer>
     );
 }
 
+const NumbersContainer = styled.nav`
+
+
+
+`;
 
 
 const PageContainer = styled.main`
