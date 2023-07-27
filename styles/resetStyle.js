@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { backgroundColor, textColor } from "../colors/colors";
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -28,6 +29,7 @@ html, body, div, span, applet, object, iframe,
 	}
 	body {
 		line-height: 1;
+        background-color: ${backgroundColor};
 	}
 	ol, ul {
 		list-style: none;
@@ -44,6 +46,10 @@ html, body, div, span, applet, object, iframe,
 		border-collapse: collapse;
 		border-spacing: 0;
 	}
+
+    h1,h2{
+        color: ${textColor};
+    }
 `;
 
 export default GlobalStyle;
