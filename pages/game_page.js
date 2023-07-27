@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { styled } from 'styled-components'
-import OpenChest from "../components/OpenChestContainer";
+import OpenChest from "../components/OpenChest";
 
 const Container = styled.div`
     display: flex;
