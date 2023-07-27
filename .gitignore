@@ -18,6 +18,7 @@
 package-lock.json
 package-lock
 yarn
+yarn.lock
 .lock
 
 # misc
