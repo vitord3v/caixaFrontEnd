@@ -15,18 +15,11 @@ export default function Bingo() {
     setSelectedNumbers([]);
   }
 
-  useEffect(()=>{
-    if(selectedNumbers.length == 10 && selectedTeam == "Selecione seu time")
-    {
-        
-    }
-},[selectedNumbers])
-
   function finish()
   {
     setGames([]);
     setSelectedNumbers([]);
-    setPlayedGames(games.length);
+    setPlayedGames(playedGames + games.length);
   }
 
   return (
