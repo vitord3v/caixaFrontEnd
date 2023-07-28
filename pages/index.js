@@ -29,6 +29,7 @@ const BetContainer = styled.div`
     p {
         font-size: 64px;
         font-family: 'Poppins';
+        color: white;
     }
 
     .inner2{
@@ -63,6 +64,7 @@ const ChestContainer = styled.div`
     p {
         font-family: 'Poppins';
         font-size: 14px;
+        color: white;
     }
 
     h1{
