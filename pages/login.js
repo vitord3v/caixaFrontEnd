@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components"
-import { Link } from "react-router-dom"
 import Logomarca from "../components/Logomarca";
+import Link from "next/link";
 
 export default function Login() {
 
@@ -21,8 +21,8 @@ export default function Login() {
 
       </form>
 
-      <Link to='/cadastro'>
-        Primeira vez? Cadastre-se!
+      <Link href="/game_page">
+        <Cadastro>Primeira vez? Cadastre-se!</Cadastro>
       </Link>
 
     </SingInContainer>
@@ -35,14 +35,22 @@ const SingInContainer = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color:#CCCCCC;
+  background-color:#131129;
 
   button{
-    width: calc(100% - 167px);
-    background-color: #f87b09;
+    width: calc(100% - 1500px);
+    background-color: #F09000;
   }
 `
 
 const Input1 = styled.input`
   margin-top:250px;
+`
+
+const Cadastro = styled.h1`
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    margin-left:60px;
 `
