@@ -80,7 +80,7 @@ export default function Bingo() {
 
 const Grid = styled.div`
   margin-top: 2rem;
-  max-width: 700px;
+  max-width: 590px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(8, 1fr);
