@@ -3,32 +3,31 @@ import Logo from "../img/timemania.png";
 import Rectangle1 from "../img/Rectangle1.png";
 import Rectangle2 from "../img/Rectangle2.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function Cabeçalho() {
 
+    const router = useRouter();
+
+    const showHeader = router.pathname !== "/login";
+
     return (
-
-        <PageContainerTopo>
-
-            <Container>
-
+        <>
+          {showHeader && (
+            <PageContainerTopo>
+              <Container>
                 <Image src={Logo} width={400} height={68} alt="Logo" />
-
                 <TracosLogo>
-
-                    <Image src={Rectangle1} width={200} height={6} alt="Rectangle1" />
-                    <Image src={Rectangle2} width={200} height={6} alt="Rectangle2" />
-
+                  <Image src={Rectangle1} width={200} height={6} alt="Rectangle1" />
+                  <Image src={Rectangle2} width={200} height={6} alt="Rectangle2" />
                 </TracosLogo>
-
-            </Container>
-
-            <MessageUser>Bem-vindo(a) Nathália Brum! </MessageUser>
-
-        </PageContainerTopo>
-
-    )
-}
+              </Container>
+              <MessageUser>Bem-vindo(a) Nathália Brum! </MessageUser>
+            </PageContainerTopo>
+          )}
+        </>
+      );
+    }
 
 const PageContainerTopo = styled.div`
     display: flex;

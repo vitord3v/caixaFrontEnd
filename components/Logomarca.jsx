@@ -31,9 +31,8 @@ const PageContainerTopo = styled.div`
   justify-content: center;
   align-items: center;
   height: 200px;
-  background-color: #212121;
+  background-color: #131129;
   width: 100%;
-  box-shadow: 0px 4px 4px 0px #00000026;
   position: fixed;
   top: 0;
   left: 0;

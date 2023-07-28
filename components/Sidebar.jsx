@@ -5,29 +5,41 @@ import Grades from "../img/grades.png";
 import Perfil from "../img/perfil.png";
 import Trevo from "../img/trevo.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function Sidebar() {
 
-    const icons = [
-        { id: 1, src: Trevo, description: 'Aposte' },
-        { id: 2, src: Bau, description: 'Abrir Baús' },
-        { id: 3, src: Grade, description: 'Minha Coleção' },
-        { id: 4, src: Grades, description: 'Álbum Timemania' },
-        { id: 5, src: Perfil, description: 'Minha Conta' }
-    ];
+  const router = useRouter();
 
-    return (
+  const showSidebar = router.pathname !== "/login";
+
+  const icons = [
+    { id: 1, src: Trevo, description: 'Aposte' },
+    { id: 2, src: Bau, description: 'Abrir Baús' },
+    { id: 3, src: Grade, description: 'Minha Coleção' },
+    { id: 4, src: Grades, description: 'Álbum Timemania' },
+    { id: 5, src: Perfil, description: 'Minha Conta' }
+  ];
+
+  return (
+    <>
+      {showSidebar && (
 
         <SidebarContainer>
-            {icons.map((icon) => (
-                <IconItem key={icon.id}>
-                    <Image src={icon.src} alt={`Ícone ${icon.id}`} />
-                    <IconDescription>{icon.description}</IconDescription>
-                </IconItem>
-            ))}
+          {icons.map((icon) => (
+            <IconItem key={icon.id}>
+              <Image src={icon.src} alt={`Ícone ${icon.id}`} />
+              <IconDescription>{icon.description}</IconDescription>
+            </IconItem>
+          ))}
         </SidebarContainer>
 
-    )
+      )}
+    </>
+
+
+
+  )
 }
 
 const SidebarContainer = styled.div`
