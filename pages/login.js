@@ -2,16 +2,44 @@ import { useState } from "react";
 import styled from "styled-components"
 import Logomarca from "../components/Logomarca";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function Login() {
+
+  const router = useRouter();
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
+  function enviarInfos(e) {
+    e.preventDefault();
+
+    const obj = {
+      email: email,
+      password: senha
+    }
+
+    const promise = axios.post(`${import.meta.env.VITE_API_URL}/`, obj);
+
+    promise.then(resposta => {
+     
+      router.push("/game_page");
+
+    });
+
+    promise.catch(erro => {
+
+      alert('Usuário e/ou senha inválidos!');
+      console.log(erro.response.data);
+    });
+
+  }
+
   return (
     <SingInContainer>
 
-      <form>
+      <form onSubmit={enviarInfos}>
 
         <Logomarca />
 
@@ -44,7 +72,6 @@ const SingInContainer = styled.section`
 `
 
 const Input1 = styled.input`
-  margin-top:250px;
 `
 
 const Cadastro = styled.h1`
@@ -52,5 +79,4 @@ const Cadastro = styled.h1`
     font-weight: 400;
     font-size: 20px;
     color: white;
-    margin-left:60px;
 `
