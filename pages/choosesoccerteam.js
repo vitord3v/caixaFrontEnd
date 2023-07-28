@@ -40,8 +40,8 @@ function chooseSoccerTeam () {
                 </button>
             </div>
             <SoccerCardContainer>
-                <SoccerCard />
-                <SoccerCard />
+                <SoccerCard turned={false} name='Silêncio no maraca' source='/soccer-player.svg' alt_text=''/>
+                <SoccerCard turned={false} name='Silêncio no maraca' source='/soccer-player.svg' alt_text=''/>
             </SoccerCardContainer>
         </Container>
     )

@@ -5,7 +5,7 @@ import back from '../img/back.png';
 function SoccerCard ({name, turned,source,alt_text}) {
 
     return (
-        <Card turned ={turned.toString()}>
+        <Card turned={turned.toString()}>
             <div className='front'>
                 <Image src={ source ? source : '/soccer-player.svg'} width='216' height='240' alt={alt_text} />
                 <p>{name}</p>
@@ -45,6 +45,7 @@ const Card = styled.div`
         margin-top: 10px;
         font-family: 'Poppins';
         font-size: 20px;
+        color: white;
         
     }
 

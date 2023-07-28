@@ -47,9 +47,9 @@ function YourCollection () {
                 <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>
             </div>
             <h1> Sua Coleção </h1>
-            <SoccerCard />
-            <SoccerCard />
-            <SoccerCard />
+            <SoccerCard turned={false} name='Silêncio no maraca' source='/soccer-player.svg' alt_text=''/>
+            <SoccerCard turned={false} name='Silêncio no maraca' source='/soccer-player.svg' alt_text=''/>
+            <SoccerCard turned={false} name='Silêncio no maraca' source='/soccer-player.svg' alt_text=''/>
         </Container>
                 
         </>
