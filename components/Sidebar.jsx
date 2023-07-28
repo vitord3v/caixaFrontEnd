@@ -15,11 +15,11 @@ export default function Sidebar() {
   const showSidebar = router.pathname !== "/login" && router.pathname !== "/cadastro";
 
   const icons = [
-    { id: 1, src: Trevo, description: 'Aposte' },
-    { id: 2, src: Bau, description: 'Abrir Baús' },
-    { id: 3, src: Grade, description: 'Minha Coleção' },
-    { id: 4, src: Grades, description: 'Álbum Timemania' },
-    { id: 5, src: Perfil, description: 'Minha Conta' }
+    { id: 1, redirect:'/', src: Trevo, description: 'Aposte' },
+    { id: 2, redirect:'/openchest',src: Bau, description: 'Abrir Baús' },
+    { id: 3, redirect:'/yourcollection',src: Grade, description: 'Minha Coleção' },
+    { id: 4, redirect:'/choosesoccerteam',src: Grades, description: 'Álbum Timemania' },
+    { id: 5, redirect:'/',src: Perfil, description: 'Minha Conta' }
   ];
 
   return (
@@ -28,7 +28,7 @@ export default function Sidebar() {
 
         <SidebarContainer>
           {icons.map((icon) => (
-              <Link href={icon.src}>
+              <Link key={icon.id} href={icon.redirect}>
               <IconItem key={icon.id}>
               <Image src={icon.src} alt={`Ícone ${icon.id}`} />
               <IconDescription>{icon.description}</IconDescription>
