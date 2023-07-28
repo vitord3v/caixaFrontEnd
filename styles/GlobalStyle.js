@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
-        color: white;
+        color:black;
     }
     button {
         outline: none;

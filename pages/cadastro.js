@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Logomarca from "../components/Logomarca";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function SignUpPage() {
 
@@ -55,11 +56,11 @@ function handleChangeDataNascimento(e) {
         password: senha
       };
 
-      const promise = axios.post(`${import.meta.env.VITE_API_URL}/cadastro`, obj);
+      const promise =  axios.post("http://localhost:5000/cadastro", obj);
 
       promise.then(resposta => {
         alert('Você foi cadastrado com sucesso!')
-        router.push("/game_page");
+        router.push("/login");
       });
 
       promise.catch(erro => {

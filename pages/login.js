@@ -20,11 +20,11 @@ export default function Login() {
       password: senha
     }
 
-    const promise = axios.post(`${import.meta.env.VITE_API_URL}/`, obj);
+    const promise = axios.post("http://localhost:5000/login", obj);
 
     promise.then(resposta => {
      
-      router.push("/game_page");
+      router.push("/");
 
     });
 
