@@ -1,11 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { bingoColor, bingoColorDisabled } from "../colors/colors";
 import BingoContext from "../Context/BingoContext";
 
 export default function Cell({name})
 {
-    const {selectedNumbers,setSelectedNumbers} = useContext(BingoContext);
+    const {selectedNumbers,setSelectedNumbers,setSelectedTeam,selectedTeam} = useContext(BingoContext);
+
+  
 
     function changeState()
     {
