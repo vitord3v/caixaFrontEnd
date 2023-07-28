@@ -6,6 +6,7 @@ import Perfil from "../img/perfil.png";
 import Trevo from "../img/trevo.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Sidebar() {
 
@@ -27,10 +28,13 @@ export default function Sidebar() {
 
         <SidebarContainer>
           {icons.map((icon) => (
-            <IconItem key={icon.id}>
+              <Link href={icon.src}>
+              <IconItem key={icon.id}>
               <Image src={icon.src} alt={`Ícone ${icon.id}`} />
               <IconDescription>{icon.description}</IconDescription>
-            </IconItem>
+              </IconItem>
+              </Link>
+              
           ))}
         </SidebarContainer>
 
