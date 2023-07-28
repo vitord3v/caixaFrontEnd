@@ -4,7 +4,7 @@ import SoccerCard from "../components/SoccerCard";
 import { useContext, useEffect, useRef, useState } from "react";
 import BingoContext from "../Context/BingoContext";
 import { finishColorDisabled } from "../colors/colors";
-import ConfettiExplosion from 'react-confetti-explosion';
+// import ConfettiExplosion from 'react-confetti-explosion';
 
 
 export default function openChest () {
@@ -99,7 +99,7 @@ export default function openChest () {
                     </ChestContainer>
                 </div>
                 <div className="cards">
-                {openChest && <ConfettiExplosion/>}
+                {/* {openChest && <ConfettiExplosion/>} */}
                 <SoccerCard alt_text={cards[selectedCards[1]].alt} turned={openChest == true ? false : true} name={cards[selectedCards[0]].name} source={cards[selectedCards[1]].source} />
                 <SoccerCard alt_text={cards[selectedCards[1]].alt} turned={openChest == true ? false : true} name={cards[selectedCards[1]].name} source={cards[selectedCards[1]].source}/>
                 </div>
@@ -171,7 +171,9 @@ const ChooseTeamContainer = styled.div`
     gap: 1rem;
     font-family: 'Poppins';
     
-
+    p{
+        color: white;
+    }
     button {
         background: transparent;
         border: 2px solid white;
@@ -188,6 +190,7 @@ const ChestContainer = styled.div`
      P {
         margin-bottom: 1rem;
         font-family: 'Poppins';
+        color: white;
      }
 
      button {
