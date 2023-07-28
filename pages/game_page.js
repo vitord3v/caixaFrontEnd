@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { styled } from 'styled-components'
 import OpenChest from "../components/OpenChest";
+import BetGame from '../components/BetGame'
+import Bingo from "../components/Bingo";
 
 const Container = styled.div`
     display: flex;
@@ -68,6 +70,8 @@ export default function GamePage() {
             
         </Container>
         <OpenChest />
+        <BetGame />
+        <Bingo/>
         </>
     );
 }
