@@ -8,7 +8,7 @@ const BetContainer = styled.div`
   align-items: center;
   position: absolute;
   top: -25px;
-  left:200px;
+  left:0px;
 
     p {
         color:white;
@@ -17,7 +17,7 @@ const BetContainer = styled.div`
     }
 
     button{
-        margin-left: 25px;
+        margin-left: 35px;
         width: 220px;
         height: 42px;
         border-radius: 40px;

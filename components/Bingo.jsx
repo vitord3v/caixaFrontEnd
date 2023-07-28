@@ -2,12 +2,13 @@ import styled from 'styled-components'
 import Cell from './Cell';
 import BetGame from './BetGame';
 import { bingoColor, finishColorDisabled } from '../colors/colors';
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import BingoContext from '../Context/BingoContext';
 
 export default function Bingo() {
   const cells = Array.from({ length: 80 }, (_, i) => i + 1);
-  const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
+  const selectRef = useRef();
+  const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames,setSelectedTeam,selectedTeam} = useContext(BingoContext);
   function bet()
   {
     setGames([...games,[...selectedNumbers]])
@@ -18,12 +19,12 @@ export default function Bingo() {
   {
     setGames([]);
     setSelectedNumbers([]);
-    setPlayedGames(games.length);
+    setPlayedGames(playedGames + games.length);
   }
 
   return (
     <MainContainer>
-      <Container>
+      <Container len ={selectedNumbers.length} team={selectedTeam}>
         <BetGame />
         <Grid>
           {cells.map((cell) => (
@@ -36,7 +37,7 @@ export default function Bingo() {
             <label className='choose-your-team'>
               Escolha seu clube
             </label>
-            <select id="times">
+            <select id="times" ref={selectRef} onChange={(e)=> setSelectedTeam(e.target.value)}>
               <option value="Selecione seu time">Selecione seu time</option>
               <option value="Flamengo">Flamengo</option>
               <option value="Palmeiras">Palmeiras</option>
@@ -62,7 +63,7 @@ export default function Bingo() {
           </form>
           <div className='actions'>
             <div className='btns'>
-              <button onClick={bet} disabled={selectedNumbers.length == 10 ? false : true} className='next'>Próximo jogo</button>
+              <button title={selectedTeam == 'Selecione seu time' ? 'Selecione seu time' : 'Próximo jogo'} onClick={bet} disabled={selectedNumbers.length == 10 && selectedTeam !== "Selecione seu time" ? false : true} className='next'>Próximo jogo</button>
               <button disabled={games.length >= 9 ? false : true} onClick={finish} className='finish'>Finalizar</button>
             </div>
             <div className='values'>
@@ -79,11 +80,10 @@ export default function Bingo() {
 
 const Grid = styled.div`
   margin-top: 2rem;
-  margin-left: 200px;
   max-width: 700px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-rows: repeat(8, 1fr);
   gap: 10px;
   box-sizing: border-box;
 `;
@@ -91,7 +91,7 @@ const Grid = styled.div`
 
 const Container = styled.div`
     display: flex;
-    gap: 10rem;
+    gap: 50px;
     align-items: center;
     justify-content:center;
     position: relative;
@@ -159,13 +159,14 @@ const Container = styled.div`
         }
       }
       button{
-        width: 180px;
+        width: 140px;
         height: 42px;
         border-radius: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
         border: 0;
+        font-size: 16px;
         transition: all 200ms;
 
         &:disabled{
@@ -197,10 +198,12 @@ const Container = styled.div`
       height: 42px;
       color:white;
       border-radius: 40px;
-      border: 2px solid #B4B4B4;
+      border: ${(props) => props.len == 10 && props.team == "Selecione seu time" ? `2px solid ${bingoColor}` : "2px solid #B4B4B4"};
       background: rgba(217, 217, 217, 0.00);
       padding:10px;
       text-align: center;
+
+      
     
       cursor: pointer;
       option{

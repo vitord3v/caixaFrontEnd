@@ -7,9 +7,9 @@ import BingoContext from "../Context/BingoContext";
 
 const Container = styled.div`
     display: flex;
+    align-items: center;
     justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
+    gap: 100px;
     margin-bottom: 100px;
     color: white;
 
@@ -37,9 +37,18 @@ const BetContainer = styled.div`
         justify-content: center;
         flex-direction: column;
     }
+`;
 
-    
-`
+const PageContainer = styled.div`
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 140px;
+    margin-top: 50px;
+
+`;
 
 const ChestContainer = styled.div`
     padding: 1rem;
@@ -50,6 +59,7 @@ const ChestContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 100px;
     p {
         font-family: 'Poppins';
         font-size: 14px;
@@ -64,7 +74,7 @@ const ChestContainer = styled.div`
 export default function Home() {
     const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
     return(
-        <>
+        <PageContainer>
         <Container>
             <BetContainer>
                 <div className="inner2">
@@ -87,7 +97,7 @@ export default function Home() {
 
         
         <Bingo/>
-        </>
+        </PageContainer>
     );
 }
 
