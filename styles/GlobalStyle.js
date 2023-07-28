@@ -5,12 +5,12 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
+        color: white;
     }
     button {
         outline: none;
         border: none;
         border-radius: 20px;
-        background-color: #a328d6;
         font-size: 20px;
         font-weight: 600;
         color: #fff;
