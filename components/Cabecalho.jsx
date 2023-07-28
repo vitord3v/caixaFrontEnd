@@ -38,9 +38,9 @@ const PageContainerTopo = styled.div`
     background-color: #131129;
     width:100%;
     box-shadow: 0px 4px 4px 0px #00000026;
-    position: fixed;
     top: 0;
     left:0;
+    margin-bottom: 100px;
 `
 
 const MessageUser = styled.h1`
