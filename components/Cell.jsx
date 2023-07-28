@@ -37,13 +37,28 @@ const SCell = styled.div`
   justify-content: center; 
   align-items: center;
   border: 0;
-  cursor:  ${(props) => props.is_selected == 'true' ? 'pointer' : Number(props.selected_amount) < 10 ? 'pointer' : 'not-allowed' };;
   
+  cursor:  ${(props) => props.is_selected == 'true' ? 'pointer' : Number(props.selected_amount) < 10 ? 'pointer' : 'not-allowed' };;
+  &:hover{
+   
   .inner{
-    color: ${(props) => props.is_selected == 'false' ? 'black' : 'white'};;
+    font-size: 40px;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:${(props) => props.is_selected == 'true' ? bingoColor : Number(props.selected_amount) < 10 ? 'white' : bingoColorDisabled };
+    border-radius: 50%;
+  }
+    }
+  .inner{
+    color: black;
     font-size: 19px;
     font-weight: bold;
     font-family: 'Poppins';
     user-select: none;
+   
   }
 `;
