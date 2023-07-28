@@ -1,10 +1,13 @@
+import { useContext } from 'react';
 import styled from 'styled-components'
+import BingoContext from '../Context/BingoContext';
 
 const BetContainer = styled.div`
   display: flex;
   gap: 30px;
+  align-items: center;
   position: absolute;
-  top: -10px;
+  top: -25px;
   left:200px;
 
     p {
@@ -12,12 +15,52 @@ const BetContainer = styled.div`
         font-family: 'Poppins';
         font-size: 23px;
     }
+
+    button{
+        margin-left: 25px;
+        width: 220px;
+        height: 42px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #B4B4B4 !important;
+        padding: 0;
+        transition: all 200ms;
+
+        &:disabled{
+        color: lightgray;
+      }
+
+        &:enabled{
+          &:hover{
+          color: lightgray;
+        }
+        }
+    }
 `
 function BetGame () {
+    const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
+
+    function randomize()
+    {
+        let numbersArray = [];
+
+        while (numbersArray.length < 10) {
+            let randomNumber = Math.floor(Math.random() * (80 - 0 + 1)) + 0;
+
+            if (!numbersArray.includes(randomNumber)) {
+                numbersArray.push(randomNumber);
+            }
+        }
+        setSelectedNumbers(numbersArray);
+    }
+
     return (
         <BetContainer>
             <p>Sorteio: 3090</p>
-            <p>Data: 27/08</p>      
+            <p>Data: 27/08</p>   
+            <button onClick={randomize}>Escolher aleatório</button>   
         </BetContainer>
     )
 }

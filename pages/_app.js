@@ -15,8 +15,10 @@ const theme = {
 
 export default function App({ Component, pageProps }) {
   const [selectedNumbers,setSelectedNumbers] = useState([]);
+  const [games,setGames] = useState([]);
+  const [playedGames,setPlayedGames] = useState(0);
   return (
-    <BingoContext.Provider value={{selectedNumbers,setSelectedNumbers}}>
+    <BingoContext.Provider value={{selectedNumbers,setSelectedNumbers, games, setGames,playedGames,setPlayedGames}}>
     <ResetStyle />
     <GlobalStyle />
     <Cabecalho />
