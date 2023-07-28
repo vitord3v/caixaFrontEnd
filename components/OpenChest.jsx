@@ -1,30 +1,44 @@
 import styled from 'styled-components'
+import { backgroundColor } from '../colors/colors';
 
 const OpenChestContainer = styled.div`
-    margin-top: 1rem;
-    margin-left: 1000px;
+    bottom: -80px;
+    right: 0;
     display: flex;
     align-items: center;
+    font-family: 'Poppins';
     gap: 1rem;
+    position: absolute;
 
     p {
         color: white;
+        font-family: 'Poppins';
     }
     
     button {
-        padding:0.5rem;
         border:0;
+        width: 117px;
+        height: 39px;
+        border-radius: 30px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: gray;
-        border-radius: 10px;
+        font-family: 'Poppins';
+        transition: all 200ms;
+        &:hover{
+            background-color: lightgray;
+            color: ${backgroundColor};
+        }
     }
 `
 function OpenChest () {
     return (
         <OpenChestContainer>
             <p>Você tem 1 baú </p>
-            <div>
-                <button>Abrir</button>
-            </div>
+            <button>Abrir</button>
         </OpenChestContainer>
     )
 } 

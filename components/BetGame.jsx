@@ -1,11 +1,16 @@
 import styled from 'styled-components'
 
 const BetContainer = styled.div`
-    display: flex;
+  display: flex;
+  gap: 30px;
+  position: absolute;
+  top: -10px;
+  left:200px;
 
     p {
         color:white;
-        margin-left: 180px;
+        font-family: 'Poppins';
+        font-size: 23px;
     }
 `
 function BetGame () {
