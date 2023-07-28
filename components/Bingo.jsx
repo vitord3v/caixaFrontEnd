@@ -22,14 +22,45 @@ const Cell = styled.div`
   font-size: 14px;
 `;
 
+const Container = styled.div`
+    display: flex;
+    gap: 10rem;
+    align-items: center;
+    justify-content:center;
+    
+    p {
+      margin-bottom: 1rem;
+      margin-left: 10px;
+    }
+
+    div {
+      
+    }
+
+    button {
+      background-color: transparent;
+      border: 4px solid white;
+    }
+
+`
+
+
 export default function Bingo() {
     const cells = Array.from({ length: 100 }, (_, i) => i + 1);
-  
     return (
-      <Grid>
-        {cells.map((cell) => (
-          <Cell key={cell}>{cell}</Cell>
-        ))}
-      </Grid>
+      <Container>
+            <Grid>
+              {cells.map((cell) => (
+                <Cell key={cell}>{cell}</Cell>
+              ))}
+              
+            </Grid>
+            <div>
+              <p>
+                  Escolha seu clube
+              </p>
+              <button> Vasco de gama </button>
+            </div>
+      </Container>
     );
   }
