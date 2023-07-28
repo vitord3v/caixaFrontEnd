@@ -4,6 +4,8 @@ import ResetStyle from '../styles/resetStyle';
 import GlobalStyle from '../styles/GlobalStyle';
 import Cabecalho from "../components/Cabecalho"
 import Sidebar from "../components/Sidebar"
+import BingoContext from '../Context/BingoContext';
+import { useState } from "react";
 
 const theme = {
   colors: {
@@ -12,8 +14,9 @@ const theme = {
 };
 
 export default function App({ Component, pageProps }) {
+  const [selectedNumbers,setSelectedNumbers] = useState([]);
   return (
-    <>
+    <BingoContext.Provider value={{selectedNumbers,setSelectedNumbers}}>
     <ResetStyle />
     <GlobalStyle />
     <Cabecalho />
@@ -21,6 +24,6 @@ export default function App({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </BingoContext.Provider>
   );
 }

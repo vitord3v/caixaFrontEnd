@@ -1,4 +1,7 @@
 import styled from 'styled-components'
+import Cell from './Cell';
+import BetGame from './BetGame';
+
 
 const Grid = styled.div`
   margin-top: 2rem;
@@ -8,29 +11,22 @@ const Grid = styled.div`
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   gap: 10px;
+  box-sizing: border-box;
 `;
 
-const Cell = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  font-size: 14px;
-`;
 
 const Container = styled.div`
     display: flex;
     gap: 10rem;
     align-items: center;
     justify-content:center;
+    position: relative;
     
-    p {
+    
+    .choose-your-team{
       margin-bottom: 1rem;
       margin-left: 10px;
+      font-family: 'Poppins';
     }
 
     div {
@@ -40,27 +36,44 @@ const Container = styled.div`
     button {
       background-color: transparent;
       border: 4px solid white;
+      font-family: 'Poppins';
     }
 
-`
+`;
+
+const MainContainer = styled.div`
+
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+
+`;
 
 
 export default function Bingo() {
-    const cells = Array.from({ length: 100 }, (_, i) => i + 1);
+    const cells = Array.from({ length: 80 }, (_, i) => i + 1);
     return (
+      <MainContainer>
+      
       <Container>
+      <BetGame />
             <Grid>
               {cells.map((cell) => (
-                <Cell key={cell}>{cell}</Cell>
+                <Cell name={cell} key={cell}></Cell>
               ))}
               
             </Grid>
-            <div>
-              <p>
+            <form>
+              <label className='choose-your-team'>
                   Escolha seu clube
-              </p>
-              <button> Vasco de gama </button>
-            </div>
+              </label>
+                <select name="" id="">
+                  <option value="Vasco de gama">Vasco de gama</option>
+                </select>
+            </form>
       </Container>
+      </MainContainer>
+  
     );
   }
