@@ -11,7 +11,7 @@ export default function Sidebar() {
 
   const router = useRouter();
 
-  const showSidebar = router.pathname !== "/login";
+  const showSidebar = router.pathname !== "/login" && router.pathname !== "/cadastro";
 
   const icons = [
     { id: 1, src: Trevo, description: 'Aposte' },

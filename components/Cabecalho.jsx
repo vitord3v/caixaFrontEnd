@@ -9,7 +9,7 @@ export default function Cabeçalho() {
 
     const router = useRouter();
 
-    const showHeader = router.pathname !== "/login";
+    const showHeader = router.pathname !== "/login" && router.pathname !== "/cadastro";
 
     return (
         <>
