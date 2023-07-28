@@ -2,10 +2,12 @@ import Image from "next/image";
 import { styled } from 'styled-components'
 import OpenChest from "../components/OpenChest";
 import Bingo from "../components/Bingo";
+import { useContext } from "react";
+import BingoContext from "../Context/BingoContext";
 
 const Container = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     max-width: 1000px;
     margin: 0 auto;
     margin-bottom: 100px;
@@ -60,6 +62,7 @@ const ChestContainer = styled.div`
 `
 
 export default function Home() {
+    const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
     return(
         <>
         <Container>
@@ -67,7 +70,7 @@ export default function Home() {
                 <div className="inner2">
                     <h1>Suas Apostas</h1>
                     <p>
-                        0/10
+                        {playedGames.toString()}/10
                     </p>
                 </div>
             </BetContainer>

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import { backgroundColor } from '../colors/colors';
+import { useContext } from 'react';
+import BingoContext from '../Context/BingoContext';
 
 const OpenChestContainer = styled.div`
     bottom: -80px;
@@ -35,9 +37,11 @@ const OpenChestContainer = styled.div`
     }
 `
 function OpenChest () {
+    const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
     return (
         <OpenChestContainer>
-            <p>Você tem 1 baú </p>
+            {console.log(Math.floor(1 / playedGames))}
+            <p>Você tem {Math.floor(1 / playedGames)} baú </p>
             <button>Abrir</button>
         </OpenChestContainer>
     )

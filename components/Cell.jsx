@@ -5,26 +5,21 @@ import BingoContext from "../Context/BingoContext";
 
 export default function Cell({name})
 {
-    const [selected,setSelected] = useState(false);
     const {selectedNumbers,setSelectedNumbers} = useContext(BingoContext);
 
     function changeState()
     {
-        if(!selected && selectedNumbers.length < 10)
+        if(selectedNumbers.includes(name) == false && selectedNumbers.length < 10)
         {
             setSelectedNumbers([...selectedNumbers,name]);
-            setSelected(true);
         }
         else{
             setSelectedNumbers(selectedNumbers.filter(n => n !== name));
-            setSelected(false);
         }
-
-        console.log(selectedNumbers);
     }
 
     return(
-        <SCell selected_amount={selectedNumbers.length} is_selected={selected.toString()} onClick={changeState}>
+        <SCell selected_amount={selectedNumbers.length} is_selected={selectedNumbers.includes(name).toString()} onClick={changeState}>
             <p className="inner">{name}</p>
         </SCell>
     );
