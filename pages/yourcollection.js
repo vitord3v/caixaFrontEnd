@@ -90,7 +90,7 @@ function YourCollection() {
                     <div className='head'>
                         
                         {userAddress ? <>
-                        <button className='walletButton' disabled='true' > Carteira Conectada </button> 
+                        <button disabled={true} className='walletButton'> Carteira Conectada </button> 
                         <h2> Carteira conectada com endereço: <br/> {userAddress}</h2> 
                         
                         </>
@@ -195,6 +195,9 @@ const Wrap = styled.div`
     .walletButton {
         background-color: #F09000;
         width:250px;
+        &:disabled{
+            cursor: not-allowed !important;
+        }
     }
 
     .cards{
@@ -214,12 +217,15 @@ const Wrap = styled.div`
     button{
         transition: all 200ms;
         border: 1px solid transparent;
-        &:hover{
+        &:enabled{
+            &:hover{
             color: ${bingoColor};
             background-color: ${contrastColor};
             border: 1px solid ${bingoColor};
         }
+        
     }
+}
 `
 const Container1 = styled.div`
     display: flex;
