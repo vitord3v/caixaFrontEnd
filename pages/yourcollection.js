@@ -22,11 +22,12 @@ function YourCollection() {
     margin-top:75px;
     margin-bottom:75px;
 
-    @media (max-width: 1050px) {
-        
-        flex-direction: column;
-       gap: 50px;
+    .container {
+        display: flex;
+        display: none;
     }
+
+   
 
     .head{
         display: flex;
@@ -38,6 +39,12 @@ function YourCollection() {
             color: ${contrastColor};
             font-family: 'Poppins';
         }
+
+        @media (max-width: 1050px) {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
     }
 
     h1{
@@ -192,39 +199,39 @@ const Container1 = styled.div`
     }, []);
 
     return (
-        <>
+        <div >
         <Container1>
-                <div className='head'>
-                    <h1> Minha Coleção </h1>
-                </div>
+            <div className='head'>
+                <h1> Minha Coleção </h1>
+            </div>
 
-                <div className='cards'>
-                    {nftsEspecificacoes.map((nfts) => (
+            <div className='cards'>
+                {nftsEspecificacoes.map((nfts) => (
 
-                        <SoccerCard key={nfts.tokenId} show={true} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
+                    <SoccerCard key={nfts.tokenId} show={true} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
 
-                    ))}
+                ))}
 
-                </div>
-            </Container1>
+            </div>
+        </Container1>
 
             <Container>
                 <div className='head'>
                     <h1> Coleção na sua Carteira </h1>
                     {userAddress ? <h2>{userAddress}</h2> : <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
                 </div>
+ 
+            <div className='cards'>
+                {nftsEspecificacoes.map((nfts) => (
 
-                <div className='cards'>
-                    {nftsEspecificacoes.map((nfts) => (
+                    <SoccerCard key={nfts.tokenId} show={false} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
 
-                        <SoccerCard key={nfts.tokenId} show={false} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
+                ))}
 
-                    ))}
+            </div>
+        </Container>
 
-                </div>
-            </Container>
-
-        </>
+        </div>
     )
 }
 
