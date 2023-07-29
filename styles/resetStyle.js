@@ -29,7 +29,7 @@ html, body, div, span, applet, object, iframe,
 	}
 	body {
 		line-height: 1;
-        background-color: ${backgroundColor};
+        background-color: ${(props)=> props.back} !important;
 	}
 	ol, ul {
 		list-style: none;

@@ -9,6 +9,7 @@ import { useState } from "react";
 import  LoginContext  from '../Context/LoginContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ColorsContext from '../Context/ColorsContext';
 
 const theme = {
   colors: {
@@ -23,6 +24,25 @@ export default function App({ Component, pageProps }) {
   const [playedGames, setPlayedGames] = useState(0);
   const [user, setUser] = useState(undefined);
   const [token, setToken] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState("#131129");
+  const [textColor, setTextColor] = useState("white");
+  const [bingoColor, setBingoColor] = useState("#F09000");
+  const [finishColorDisabled, setFinishColorDisabled] = useState("#975b02");
+  const [bingoColorDisabled, setBingoColorDisabled] = useState("#858585");
+  const [contrastColor, setContrastColor] = useState("#ffffff");
+  const [darkColor, setDarkColor] = useState("#00000");
+  const [sidebarColor, setSidebarColor] = useState("#1D1932");
+  const [contrastColor2, setContrastColor2] = useState("#d4d4d4");
+
+  const handleBackgroundColorChange = (newColor) => setBackgroundColor(newColor);
+  const handleTextColorChange = (newColor) => setTextColor(newColor);
+  const handleBingoColorChange = (newColor) => setBingoColor(newColor);
+  const handleFinishColorDisabledChange = (newColor) => setFinishColorDisabled(newColor);
+  const handleBingoColorDisabledChange = (newColor) => setBingoColorDisabled(newColor);
+  const handleContrastColorChange = (newColor) => setContrastColor(newColor);
+  const handleDarkColorChange = (newColor) => setDarkColor(newColor);
+  const handleSidebarColorChange = (newColor) => setSidebarColor(newColor);
+  const handleContrastColor2Change = (newColor) => setContrastColor2(newColor);
 
   useEffect(()=>{
 
@@ -42,10 +62,30 @@ export default function App({ Component, pageProps }) {
   };
 
   return (
+    <ColorsContext.Provider value={{
+      backgroundColor,
+      textColor,
+      bingoColor,
+      finishColorDisabled,
+      bingoColorDisabled,
+      contrastColor,
+      darkColor,
+      sidebarColor,
+      contrastColor2,
+      handleBackgroundColorChange,
+      handleTextColorChange,
+      handleBingoColorChange,
+      handleFinishColorDisabledChange,
+      handleBingoColorDisabledChange,
+      handleContrastColorChange,
+      handleDarkColorChange,
+      handleSidebarColorChange,
+      handleContrastColor2Change,
+    }}>
     <LoginContext.Provider value={{user,setUser, isLogged, setToken, token}}>
       <BingoContext.Provider value={{ selectedNumbers, setSelectedNumbers, games, setGames, playedGames, setPlayedGames, selectedTeam, setSelectedTeam }}>
         <ToastContainer/>
-        <ResetStyle />
+        <ResetStyle back={backgroundColor} />
         <GlobalStyle />
         <Cabecalho />
         <Sidebar />
@@ -54,5 +94,6 @@ export default function App({ Component, pageProps }) {
         </ThemeProvider>
       </BingoContext.Provider>
     </LoginContext.Provider>
+    </ColorsContext.Provider>
   );
 }

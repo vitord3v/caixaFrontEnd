@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import  LoginContext  from "../Context/LoginContext";
-import { bingoColor, contrastColor, darkColor } from "../colors/colors";
+import ColorsContext from "../Context/ColorsContext";
 
 export default function Login() {
 
@@ -14,6 +14,17 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const {setUser} = useContext(LoginContext);
+  const {
+    backgroundColor,
+    textColor,
+    bingoColor,
+    finishColorDisabled,
+    bingoColorDisabled,
+    contrastColor,
+    darkColor,
+    sidebarColor,
+    contrastColor2,
+  } = useContext(ColorsContext);
 
   function enviarInfos(e) {
     e.preventDefault();
@@ -22,8 +33,7 @@ export default function Login() {
       email: email,
       password: senha
     }
-
-    const promise = axios.post(`${process.env.VITE_API_URL}/login`, obj);
+    const promise = axios.post(`${process.env.NEXT_PUBLIC_URL}/login`, obj);
 
     promise.then(resposta => {
 
@@ -41,29 +51,7 @@ export default function Login() {
     });
 
   }
-
-  return (
-    <SingInContainer>
-
-      <form onSubmit={enviarInfos}>
-
-        <Logomarca />
-
-        <input placeholder="E-mail" type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input placeholder="Senha" type="password" autoComplete="new-password" id="senha" value={senha} onChange={(e) => setSenha(e.target.value)} required />
-        <button type="submit">Entrar</button>
-
-      </form>
-
-      <Link href="/cadastro">
-        <Cadastro>Primeira vez? Cadastre-se!</Cadastro>
-      </Link>
-
-    </SingInContainer>
-  )
-}
-
-const SingInContainer = styled.section`
+  const SingInContainer = styled.section`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -114,3 +102,25 @@ const Cadastro = styled.h1`
     font-size: 20px;
     color: ${contrastColor};
 `
+
+  return (
+    <SingInContainer>
+
+      <form onSubmit={enviarInfos}>
+
+        <Logomarca />
+
+        <input placeholder="E-mail" type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input placeholder="Senha" type="password" autoComplete="new-password" id="senha" value={senha} onChange={(e) => setSenha(e.target.value)} required />
+        <button type="submit">Entrar</button>
+
+      </form>
+
+      <Link href="/cadastro">
+        <Cadastro>Primeira vez? Cadastre-se!</Cadastro>
+      </Link>
+
+    </SingInContainer>
+  )
+}
+
