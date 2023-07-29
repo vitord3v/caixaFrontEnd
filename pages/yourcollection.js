@@ -3,138 +3,16 @@ import Web3 from 'web3';
 import SoccerCard from "../components/SoccerCard";
 import styled from "styled-components";
 import { Alchemy, Network } from "alchemy-sdk";
-import ColorsContext from '../Context/ColorsContext';
+import { backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2 } from "../colors/colors";
 
 
 function YourCollection() {
-    const {backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2} = useContext(ColorsContext);
+   
 
     const [userAddress, setUserAddress] = useState(null);
     const [nftsEspecificacoes, setNftsEspecificacoes] = useState([]);
 
-    const Container = styled.div`
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 100px;
-    margin-top:75px;
-    margin-bottom:75px;
-
-    @media (max-width: 1050px) {
-        
-        flex-direction: column;
-       gap: 50px;
-    }
-
-    .head{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        width:894px;
-
-        .wallet{
-            color: ${contrastColor};
-            font-family: 'Poppins';
-        }
-    }
-
-    h1{
-        color: ${contrastColor};
-        font-family: 'Poppins';
-        white-space: nowrap;
-    }
-    h2{
-        color: ${contrastColor};
-        font-family: 'Poppins';
-        
-    }
-
-    .walletButton {
-        background-color: #F09000;
-        width:250px;
-    }
-
-    .cards{
-        display: flex;
-        flex-wrap:wrap;
-        gap: 10px;
-        width:894px;
-        height:auto;
-
-    }
-
-    button{
-        transition: all 200ms;
-        border: 1px solid transparent;
-        &:hover{
-            color: ${bingoColor};
-            background-color: ${contrastColor};
-            border: 1px solid ${bingoColor};
-        }
-    }
-`
-const Container1 = styled.div`
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 100px;
-    margin-top:180px;
-
-    @media (max-width: 1050px) {
-        
-        flex-direction: column;
-       gap: 50px;
-    }
-
-    .head{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        width:894px;
-        justify-content: center;
-
-        .wallet{
-            color: ${contrastColor};
-            font-family: 'Poppins';
-        }
-    }
-
-    h1{
-        color: ${contrastColor};
-        font-family: 'Poppins';
-        white-space: nowrap;
-    }
-
     
-
-    .walletButton {
-        background-color: #F09000;
-        width:250px;
-    }
-
-    .cards{
-        display: flex;
-        flex-wrap:wrap;
-        gap: 10px;
-        width:894px;
-        height:auto;
-
-    }
-
-    button{
-        transition: all 200ms;
-        border: 1px solid transparent;
-        &:hover{
-            color: ${bingoColor};
-            background-color: ${contrastColor};
-            border: 1px solid ${bingoColor};
-        }
-    }
-`
 
     const getNftByAdress = async () => {
 
@@ -229,3 +107,126 @@ const Container1 = styled.div`
 }
 
 export default YourCollection;
+
+const Container = styled.div`
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 100px;
+    margin-top:75px;
+    margin-bottom:75px;
+
+    @media (max-width: 1050px) {
+        
+        flex-direction: column;
+       gap: 50px;
+    }
+
+    .head{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width:894px;
+
+        .wallet{
+            color: ${contrastColor};
+            font-family: 'Poppins';
+        }
+    }
+
+    h1{
+        color: ${contrastColor};
+        font-family: 'Poppins';
+        white-space: nowrap;
+    }
+
+    .walletButton {
+        background-color: #F09000;
+        width:250px;
+    }
+
+    .cards{
+        display: flex;
+        flex-wrap:wrap;
+        gap: 10px;
+        width:894px;
+        height:auto;
+
+    }
+
+    button{
+        transition: all 200ms;
+        border: 1px solid transparent;
+        &:hover{
+            color: ${bingoColor};
+            background-color: ${contrastColor};
+            border: 1px solid ${bingoColor};
+        }
+    }
+`
+const Container1 = styled.div`
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 100px;
+    margin-top:180px;
+
+    @media (max-width: 1050px) {
+        
+        flex-direction: column;
+       gap: 50px;
+    }
+
+    .head{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width:894px;
+        justify-content: center;
+
+        .wallet{
+            color: ${contrastColor};
+            font-family: 'Poppins';
+        }
+    }
+
+    h1{
+        color: ${contrastColor};
+        font-family: 'Poppins';
+        white-space: nowrap;
+    }
+
+    h2{
+        color: ${contrastColor};
+        font-family: 'Poppins';
+        
+    }
+
+    .walletButton {
+        background-color: #F09000;
+        width:250px;
+    }
+
+    .cards{
+        display: flex;
+        flex-wrap:wrap;
+        gap: 10px;
+        width:894px;
+        height:auto;
+
+    }
+
+    button{
+        transition: all 200ms;
+        border: 1px solid transparent;
+        &:hover{
+            color: ${bingoColor};
+            background-color: ${contrastColor};
+            border: 1px solid ${bingoColor};
+        }
+    }
+`

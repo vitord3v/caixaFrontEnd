@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import styled from 'styled-components'
 import BingoContext from '../Context/BingoContext';
 import { contrastColor, contrastColor2 } from '../colors/colors';
+import ColorsContext from '../Context/ColorsContext';
 
 const BetContainer = styled.div`
   display: flex;
@@ -47,7 +48,7 @@ const BetContainer = styled.div`
 `
 function BetGame () {
     const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
-
+    const {backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2} = useContext(ColorsContext);
     function randomize()
     {
         let numbersArray = [];

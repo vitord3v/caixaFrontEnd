@@ -7,33 +7,8 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import  LoginContext from "../Context/LoginContext";
 import ColorsContext from "../Context/ColorsContext";
-
-export default function Cabeçalho() {
-
-  const { isLogged, setToken, token,user,setUser } = useContext(LoginContext);
-  const {
-    backgroundColor,
-    textColor,
-    bingoColor,
-    finishColorDisabled,
-    bingoColorDisabled,
-    contrastColor,
-    darkColor,
-    sidebarColor,
-    contrastColor2,
-    handleBackgroundColorChange,
-    handleTextColorChange,
-    handleBingoColorChange,
-    handleFinishColorDisabledChange,
-    handleBingoColorDisabledChange,
-    handleContrastColorChange,
-    handleDarkColorChange,
-    handleSidebarColorChange,
-    handleContrastColor2Change,
-  } = useContext(ColorsContext);
-
-
-  const ColorConfigContainer = styled.div`
+import { backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2 } from "../colors/colors";
+const ColorConfigContainer = styled.div`
   background-color: ${sidebarColor};
   width: 200px;
   height: auto;
@@ -137,6 +112,12 @@ export default function Cabeçalho() {
         width: 200px;
     }
   `
+export default function Cabeçalho() {
+
+  const { isLogged, setToken, token,user,setUser } = useContext(LoginContext);
+
+
+  
   const [showColorConfig,setShowColorConfig] = useState(false);
 
   const router = useRouter();
@@ -179,31 +160,31 @@ export default function Cabeçalho() {
       <ColorConfigContainer>
         <div className="color-cont">
           <label htmlFor="main-color">Principal</label>
-          <input id="main-color" value={contrastColor}onChange={(e) => handleContrastColorChange(e.target.value)} name="main-color" type="color" />
+          <input id="main-color" value={contrastColor} name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Secundaria</label>
-          <input id="main-color" value={contrastColor2} onChange={(e) => handleContrastColor2Change(e.target.value)}name="main-color" type="color" />
+          <input id="main-color" value={contrastColor2} name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Botão selecionado</label>
-          <input id="main-color" value={bingoColor} onChange={(e) => handleBingoColorChange(e.target.value)}name="main-color" type="color" />
+          <input id="main-color" value={bingoColor} name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Botão desligado</label>
-          <input id="main-color" value={bingoColorDisabled} onChange={(e) => handleBingoColorDisabledChange(e.target.value)} name="main-color" type="color" />
+          <input id="main-color" value={bingoColorDisabled} name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Fundo</label>
-          <input id="main-color" value={backgroundColor} onChange={(e) => handleBackgroundColorChange(e.target.value)} name="main-color" type="color" />
+          <input id="main-color" value={backgroundColor} name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Sidebar</label>
-          <input id="main-color" value={sidebarColor} onChange={(e) => handleSidebarColorChange(e.target.value)}name="main-color" type="color" />
+          <input id="main-color" value={sidebarColor} name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Escuras</label>
-          <input id="main-color" value={darkColor} onChange={(e) => handleDarkColorChange(e.target.value)}name="main-color" type="color" />
+          <input id="main-color" value={darkColor} name="main-color" type="color" />
         </div>
       </ColorConfigContainer>
     }
@@ -211,6 +192,6 @@ export default function Cabeçalho() {
   );
 }
 
-// onChange={(e) => contrastColor = e.target.value}
+// lue}
 
 

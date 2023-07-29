@@ -3,14 +3,29 @@ import { useContext } from 'react';
 import BingoContext from '../Context/BingoContext';
 import { useRouter } from 'next/router';
 import ColorsContext from '../Context/ColorsContext';
-
+import { backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2 } from "../colors/colors";
 
 function OpenChest () {
     const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
-    const {backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2} = useContext(ColorsContext);
+    
     const router = useRouter();
 
-    const OpenChestContainer = styled.div`
+    
+
+   if(playedGames >= 10)
+   {
+        return (
+            <OpenChestContainer>
+                <p>Você tem {playedGames < 10 ? 0 : Math.floor( playedGames / 10 )} baú(s)</p>
+                <button onClick={()=> router.push('/openchest')}>Abrir</button>
+            </OpenChestContainer>
+        )
+   }
+} 
+
+export default OpenChest;
+
+const OpenChestContainer = styled.div`
     bottom: -80px;
     right: 0;
     display: flex;
@@ -44,16 +59,3 @@ function OpenChest () {
         }
     }
 `
-
-   if(playedGames >= 10)
-   {
-        return (
-            <OpenChestContainer>
-                <p>Você tem {playedGames < 10 ? 0 : Math.floor( playedGames / 10 )} baú(s)</p>
-                <button onClick={()=> router.push('/openchest')}>Abrir</button>
-            </OpenChestContainer>
-        )
-   }
-} 
-
-export default OpenChest;
