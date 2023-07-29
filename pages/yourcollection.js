@@ -27,7 +27,6 @@ function YourCollection() {
 
         if (userAddress) {
             const nfts = await alchemy.nft.getNftsForOwner(userAddress)
-            console.log(nfts)
             const nftList = nfts["ownedNfts"]
 
             const ownedNfts = nftList.filter((nft) => nft.contract.address === nftManiaContract)
@@ -87,36 +86,41 @@ function YourCollection() {
 
     return (
         <Wrap>
-            <Container1>
-                <div className='head'>
-                    <h1> Minha Coleção </h1>
-                </div>
-
+                <Container>
+                    <div className='head'>
+                        <h1> Coleção na sua Carteira </h1>
+                        {userAddress ? <>
+                        <button className='walletButton' disabled='true' > Carteira Conectada </button> 
+                        <h2> Carteira conectada com endereço: <br/> {userAddress}</h2> 
+                        </>
+                        : 
+                        <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
+                    </div>
+    
                 <div className='cards'>
                     {myCards.map((card,index) => (
 
                         <SoccerCard key={card.id} card_id={card.id} show={true} quantidade={1} turned={false} name={card.name} source={card.source} alt_text={card.alt} />
 
-                    ))}
-
-                </div>
-            </Container1>
-
-                <Container>
-                    <div className='head'>
-                        <h1> Coleção na sua Carteira </h1>
-                        {userAddress ? <h2>{userAddress}</h2> : <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
-                    </div>
-    
-                <div className='cards'>
-                    {nftsEspecificacoes.map((nfts) => (
-
-                        <SoccerCard key={nfts.tokenId} show={false} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
 
                     ))}
 
                 </div>
             </Container>
+
+            <Container1>
+                <div className='head'>
+                </div>
+
+                <div className='cards'>
+                    {nftsEspecificacoes.map((nfts) => (
+
+                        <SoccerCard key={nfts.tokenId} show={true} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
+
+                    ))}
+
+                </div>
+            </Container1>
 
         </Wrap>
     )
@@ -125,9 +129,11 @@ function YourCollection() {
 export default YourCollection;
 
 const Wrap = styled.div`
-        @media (max-width:700px) {
-            margin-right: 100px;
-        }
+    @media (max-width:700px) {
+        margin-right: 100px;
+    }
+
+    margin-bottom: 10rem;
     `
 
     const Container = styled.div`
@@ -147,9 +153,17 @@ const Wrap = styled.div`
 
     .head{
         display: flex;
+        flex-direction: column;
+        gap:2rem;
         align-items: center;
         justify-content: space-around;
         width:894px;
+
+        text-align: center;
+
+        h2 {
+            margin-bottom: 1rem;
+        }
 
         .wallet{
             color: ${contrastColor};
@@ -186,6 +200,11 @@ const Wrap = styled.div`
         width:894px;
         height:auto;
 
+        @media (max-width:800px) {
+            display: flex;
+            flex-direction: column;
+        }
+
     }
 
     button{
@@ -208,9 +227,8 @@ const Container1 = styled.div`
     margin-top:180px;
 
     @media (max-width: 1050px) {
-        
         flex-direction: column;
-       gap: 50px;
+        gap: 50px;
     }
 
     .head{
@@ -245,6 +263,10 @@ const Container1 = styled.div`
         gap: 10px;
         width:894px;
         height:auto;
+
+        @media (max-width:800px) {
+            flex-direction: column;
+        }
 
     }
 
