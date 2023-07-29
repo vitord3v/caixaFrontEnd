@@ -26,7 +26,7 @@ function YourCollection() {
         const alchemy = new Alchemy(config)
 
         if (userAddress) {
-            const nfts = await alchemy.nft.getNftsForOwner('0x500b86ae5D26A98c5acF602541D7Ad1F1E369B26')
+            const nfts = await alchemy.nft.getNftsForOwner(userAddress)
             const nftList = nfts["ownedNfts"]
 
             const ownedNfts = nftList.filter((nft) => nft.contract.address === nftManiaContract)
