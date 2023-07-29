@@ -31,6 +31,5 @@ export default function App({ Component, pageProps }) {
         </ThemeProvider>
       </BingoContext.Provider>
     </LoginProvider>
-
   );
 }

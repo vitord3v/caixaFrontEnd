@@ -40,6 +40,7 @@ const OpenChestContainer = styled.div`
 function OpenChest () {
     const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
     const router = useRouter();
+
    if(playedGames >= 10)
    {
         return (

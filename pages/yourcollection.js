@@ -2,14 +2,47 @@ import { useCallback } from 'react';
 import Web3 from 'web3';
 import SoccerCard from "../components/SoccerCard";
 import styled from "styled-components";
+import { bingoColor } from '../colors/colors';
 
 const Container = styled.div`
     display: flex;
     gap: 2rem;
-    margin-left: 300px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 200px;
+    margin-top: 100px;
+
+    .head{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h1{
+        color: white;
+        font-family: 'Poppins';
+        white-space: nowrap;
+    }
 
     .walletButton {
         background-color: #F09000;
+    }
+
+    .cards{
+        display: flex;
+        gap: 10px;
+    }
+
+    button{
+        transition: all 200ms;
+        border: 1px solid transparent;
+        &:hover{
+            color: ${bingoColor};
+            background-color: white;
+            border: 1px solid ${bingoColor};
+        }
     }
 `
 function YourCollection () {
@@ -43,13 +76,16 @@ function YourCollection () {
         <>
         
         <Container>
-            <div>
+            <div className='head'>
+            <h1> Sua Coleção </h1>
                 <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>
             </div>
-            <h1> Sua Coleção </h1>
-            <SoccerCard />
-            <SoccerCard />
-            <SoccerCard />
+           
+            <div className='cards'>
+            <SoccerCard turned={false} name='Silêncio no maraca' source='/soccer-player.svg' alt_text=''/>
+            <SoccerCard turned={false} name='Dinamitando' source='/dinamite.png' alt_text=''/>
+            <SoccerCard turned={false} name='Silêncio no maraca' source='/soccer-player.svg' alt_text=''/>
+            </div>
         </Container>
                 
         </>
