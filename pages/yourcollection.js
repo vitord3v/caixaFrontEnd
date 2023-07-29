@@ -92,7 +92,7 @@ function YourCollection() {
                         {userAddress ? <>
                         <button className='walletButton' disabled='true' > Carteira Conectada </button> 
                         <h2> Carteira conectada com endereço: <br/> {userAddress}</h2> 
-                        <h1>Minha coleção</h1>
+                        
                         </>
                         : 
                         <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
@@ -112,11 +112,11 @@ function YourCollection() {
             <Container1>
                 <div className='head'>
                 </div>
-
+                <h1>Minha coleção</h1>
                 <div className='cards'>
                     {nftsEspecificacoes.map((nfts) => (
 
-                        <SoccerCard key={nfts.tokenId} show={true} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
+                        <SoccerCard key={nfts.tokenId} show={false} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
 
                     ))}
 
@@ -144,7 +144,7 @@ const Wrap = styled.div`
     align-items: center;
     justify-content: center;
     margin-left: 100px;
-    margin-top:75px;
+    margin-top:150px;
     margin-bottom:75px;
 
     .container {
@@ -205,7 +205,6 @@ const Wrap = styled.div`
             display: flex;
             flex-direction: column;
         }
-
     }
 
     button{
@@ -225,7 +224,7 @@ const Container1 = styled.div`
     align-items: center;
     justify-content: center;
     margin-left: 100px;
-    margin-top:180px;
+    margin-top:50px;
 
     @media (max-width: 1050px) {
         flex-direction: column;
