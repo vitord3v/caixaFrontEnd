@@ -112,9 +112,11 @@ function YourCollection() {
 export default YourCollection;
 
 const Wrap = styled.div`
-        @media (max-width:700px) {
-            margin-right: 100px;
-        }
+    @media (max-width:700px) {
+        margin-right: 100px;
+    }
+
+    margin-bottom: 10rem;
     `
 
     const Container = styled.div`
