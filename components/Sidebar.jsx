@@ -89,6 +89,9 @@ const SidebarContainer = styled.div`
   background-color: #1D1932;
   padding: 20px;
   padding-top: 120px;
+  *{
+    transition: all 200ms;
+  }
 
   @media (max-width:800px) {
     position: fixed;
@@ -100,6 +103,11 @@ const SidebarContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width:400px) {
+      justify-content: center;
+      gap: 20px;
+  }
 
     padding-left: 20px;
     padding-right: 20px;
@@ -122,6 +130,12 @@ const IconItem = styled.div`
   min-height: 100px;
   justify-content: center;
   min-width: 80px;
+
+  @media (max-width:400px) {
+    width: 100%;
+    max-width: 40px;
+    min-width: 40px;
+  }
   
 `;
 

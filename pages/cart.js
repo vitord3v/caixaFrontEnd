@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import SoccerCard from '../components/SoccerCard'
 import { useContext, useRef, useState } from 'react';
 import BingoContext from '../Context/BingoContext';
+import { bingoColor } from '../colors/colors';
 
 const Container = styled.div`
    display: flex;
@@ -10,6 +11,30 @@ const Container = styled.div`
    width: 100%;
    align-items: center;
    justify-content: center;
+
+   h1{
+    font-family: 'Poppins';
+    font-size: 20px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    color: white;
+    white-space: nowrap !important;
+    transform: translate(-50%,-50%);
+   }
+
+   .finish{
+    transition: all 200ms;
+    border: 1px solid rgba(0,0,0,0);
+        color: black ;
+        max-width: 722px;
+        background-color: ${bingoColor};
+        &:hover{
+            border: 1px solid ${bingoColor};
+            background-color: white;
+           
+        }
+    }
 `
 
 
@@ -41,8 +66,10 @@ export default function Cart() {
     }
     return (
         <Container>
-            <GameHeader><h1>Jogo</h1><h2>Time</h2></GameHeader>
+            { games && games.length > 0 && <GameHeader><h1>Jogo</h1><h2>Time</h2></GameHeader>}
             {items()}
+            {games && games.length > 0 &&  <button className='finish'>Apostar nestes números</button>}
+            {!games || games.length == 0 && <h1>Não há nenhum jogo</h1>}
         </Container>
     )
 }
@@ -81,6 +108,8 @@ const GameHeader = styled.div`
     align-items: center;
     justify-content: space-between;
     padding-left: 20px;
+
+   
 
     *{
         color:white;
