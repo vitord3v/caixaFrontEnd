@@ -10,6 +10,10 @@ const BetContainer = styled.div`
   top: -25px;
   left:0px;
 
+  @media (max-width: 768px) {
+       width: calc(100% - 20px);
+    }
+
     p {
         color:white;
         font-family: 'Poppins';

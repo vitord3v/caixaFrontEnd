@@ -87,6 +87,11 @@ const Grid = styled.div`
   grid-template-rows: repeat(8, 1fr);
   gap: 10px;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+       display: flex;
+       flex-wrap: wrap;
+    }
 `;
 
 
@@ -97,7 +102,7 @@ const Container = styled.div`
     justify-content:center;
     position: relative;
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1100px) {
       flex-direction: column;
       display: flex;
     }

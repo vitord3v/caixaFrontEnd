@@ -3,6 +3,9 @@ import SoccerCard from '../components/SoccerCard'
 import { useContext, useRef, useState } from 'react';
 import BingoContext from '../Context/BingoContext';
 import { bingoColor } from '../colors/colors';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const Container = styled.div`
    display: flex;
@@ -11,8 +14,10 @@ const Container = styled.div`
    width: 100%;
    align-items: center;
    justify-content: center;
+   margin-top: 150px;
+   margin-bottom:100px;
 
-   h1{
+   .nogames{
     font-family: 'Poppins';
     font-size: 20px;
     position: fixed;
@@ -32,7 +37,6 @@ const Container = styled.div`
         &:hover{
             border: 1px solid ${bingoColor};
             background-color: white;
-           
         }
     }
 `
@@ -42,7 +46,7 @@ const Container = styled.div`
 
 export default function Cart() {
     const { selectedNumbers, setSelectedNumbers, games, setGames, playedGames, setPlayedGames, setSelectedTeam, selectedTeam } = useContext(BingoContext);
-
+    const router = useRouter();
     function items() {
         let arr = [];
 
@@ -60,16 +64,44 @@ export default function Cart() {
         return arr;
     }
     function finish() {
-        setGames([]);
-        setSelectedNumbers([]);
-        setPlayedGames(playedGames + games.length);
+        Swal.fire({
+            title: `<span style="font-family: 'Mulish', sans-serif;font-size: 20px;color:black">Confirmar o envio destes ${games.length} jogos?</span>`,
+            showCancelButton: true,
+            confirmButtonColor: `${bingoColor}`,
+            cancelButtonColor: `ligthgray`,
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não',
+            width: 300,
+            heightAuto: false,
+        }).then((result) => {
+            if(result.isConfirmed)
+            {
+                setGames([]);
+                setSelectedTeam("Selecione seu time")
+                setSelectedNumbers([]);
+                setPlayedGames(playedGames + games.length);
+                toast.info(`Jogos feitos com sucesso!`, {
+                    position: "bottom-left",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "colored",
+                });
+                router.push("/");
+            }
+
+        });
+       
     }
     return (
         <Container>
             { games && games.length > 0 && <GameHeader><h1>Jogo</h1><h2>Time</h2></GameHeader>}
             {items()}
-            {games && games.length > 0 &&  <button className='finish'>Apostar nestes números</button>}
-            {!games || games.length == 0 && <h1>Não há nenhum jogo</h1>}
+            {games && games.length > 0 &&  <button onClick={finish} className='finish'>Apostar nestes números</button>}
+            {!games || games.length == 0 && <h1 className='nogames'>Não há nenhum jogo</h1>}
         </Container>
     )
 }

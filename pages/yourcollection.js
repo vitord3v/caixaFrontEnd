@@ -13,13 +13,24 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     margin-left: 200px;
-    margin-top: 100px;
+    margin-top: 150px;
+
+    @media (max-width: 1050px) {
+        
+        flex-direction: column;
+       gap: 50px;
+    }
 
     .head{
         display: flex;
         gap: 10px;
         align-items: center;
         justify-content: center;
+
+        .wallet{
+            color: white;
+            font-family: 'Poppins';
+        }
     }
 
     h1{
@@ -110,7 +121,7 @@ function YourCollection () {
         <Container>
             <div className='head'>
             <h1> Sua Coleção </h1>
-                <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>
+            {userAddress ? <p className='wallet'>{userAddress}</p> : <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
             </div>
            
             <div className='cards'>

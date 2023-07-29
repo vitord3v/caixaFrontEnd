@@ -69,7 +69,6 @@ export default function Sidebar() {
             <Image src={logoutIcon.src} alt={`Ícone ${logoutIcon.id}`} width={logoutIcon.width} height={logoutIcon.height} />
             <IconDescription>{logoutIcon.description}</IconDescription>
           </IconItem>
-
         </SidebarContainer>
 
       )}
@@ -84,6 +83,7 @@ const SidebarContainer = styled.div`
   position: fixed;
   height:100%;
   left: 0;
+  z-index: 3;
   top: 0;
   width: 98px;
   background-color: #1D1932;

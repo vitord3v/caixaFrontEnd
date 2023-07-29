@@ -62,6 +62,7 @@ const PageContainerTopo = styled.div`
     top: 0;
     right:0;
     margin: 0;
+    z-index: 3;
 
     @media (max-width:800px) {
       width:calc(100%);

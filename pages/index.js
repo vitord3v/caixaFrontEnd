@@ -12,6 +12,7 @@ const Container = styled.div`
     gap: 100px;
     margin-bottom: 100px;
     color: white;
+    margin-top: 100px;
 
     @media (max-width: 768px) {
         flex-direction: column;
@@ -41,6 +42,14 @@ const BetContainer = styled.div`
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        h1{
+            white-space: nowrap;
+            margin-left: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin-top: 100px;
     }
 `;
 
@@ -51,11 +60,13 @@ const PageContainer = styled.div`
     flex-direction: column;
     margin-left: 140px;
     margin-top: 50px;
+    overflow:hidden;
 
     @media (max-width: 768px) {
         margin-left: 20px;
         display: flex;
         flex-direction: column;
+        margin-bottom: 150px;
     }
 `;
 
@@ -64,6 +75,7 @@ const ChestContainer = styled.div`
     border:1px solid white;
     border-radius: 40px;
     max-width:650px;
+    
     position: relative;
     display: flex;
     align-items: center;
@@ -80,6 +92,7 @@ const ChestContainer = styled.div`
     }
 
     @media (max-width: 768px) {
+        
         flex-direction: column;
         height: auto;
     }

@@ -126,7 +126,13 @@ const Container = styled.div`
     font-size: 2rem;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    @media (max-width: 1050px) {
+        
+        flex-direction: column;
+       gap: 50px;
+    }
 
     select{
       font-family: 'Poppins';
@@ -138,6 +144,8 @@ const Container = styled.div`
       background: rgba(217, 217, 217, 0.00);
       padding:10px;
       text-align: center;
+
+    
       
       cursor: pointer;
       option{
