@@ -23,7 +23,7 @@ export default function Login() {
       password: senha
     }
 
-    const promise = axios.post(`${process.env.VITE_API_URL}/login`, obj);
+    const promise = axios.post(`${process.env.NEXT_PUBLIC_URL}/login`, obj);
 
     promise.then(resposta => {
 
