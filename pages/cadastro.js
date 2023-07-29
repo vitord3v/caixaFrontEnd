@@ -5,39 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import ColorsContext from "../Context/ColorsContext";
-
-export default function SignUpPage() {
-
-  const router = useRouter();
-  const {
-    backgroundColor,
-    textColor,
-    bingoColor,
-    finishColorDisabled,
-    bingoColorDisabled,
-    contrastColor,
-    darkColor,
-    sidebarColor,
-    contrastColor2,
-  } = useContext(ColorsContext);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [cpf, setCPF] = useState("");
-  const [senha, setSenha] = useState('');
-  const [confirmar, setConfirmar] = useState('');
-  const [dataNascimento, setDataNascimento] = useState("");
-
-  function formatCPF(value) {
-   
-    const numericValue = value.replace(/\D/g, "");
-
-    let formattedValue = numericValue.replace(
-        /(\d{3})(\d{3})(\d{3})(\d{2})/,
-        "$1.$2.$3-$4"
-    );
-
-    return formattedValue;
-}
+import { contrastColor,darkColor,bingoColor } from "../colors/colors";
 
 const SingUpContainer = styled.section`
   height: 100vh;
@@ -92,6 +60,29 @@ const Login = styled.h1`
     color: ${contrastColor};
     text-align:center;
 `
+export default function SignUpPage() {
+
+  const router = useRouter();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [cpf, setCPF] = useState("");
+  const [senha, setSenha] = useState('');
+  const [confirmar, setConfirmar] = useState('');
+  const [dataNascimento, setDataNascimento] = useState("");
+
+  function formatCPF(value) {
+   
+    const numericValue = value.replace(/\D/g, "");
+
+    let formattedValue = numericValue.replace(
+        /(\d{3})(\d{3})(\d{3})(\d{2})/,
+        "$1.$2.$3-$4"
+    );
+
+    return formattedValue;
+}
+
+
 
 function handleCPFChange(e) {
     const value = e.target.value;

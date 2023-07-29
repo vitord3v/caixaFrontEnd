@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import SoccerCard from '../components/SoccerCard'
 import { useRef, useState } from 'react';
-
+import { backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2 } from "../colors/colors";
 const Container = styled.div`
     display: flex;
     flex-direction: column;

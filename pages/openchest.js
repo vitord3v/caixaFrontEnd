@@ -4,8 +4,12 @@ import SoccerCard from "../components/SoccerCard";
 import { useContext, useEffect, useRef, useState } from "react";
 import BingoContext from "../Context/BingoContext";
 import ConfettiExplosion from 'react-confetti-explosion';
+
+import { backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2 } from "../colors/colors";
+
 import axios from 'axios';
 import ColorsContext from "../Context/ColorsContext";
+
 
 
 export default function OpenChest () {
@@ -15,7 +19,7 @@ export default function OpenChest () {
     const [openChest,setOpenChest] = useState(false);
     const [slTeam,setSlTeam] = useState("Selecione seu time");
     const [openingChest,setOpeningChest] = useState(false);
-    const {backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2} = useContext(ColorsContext);
+
     const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames,setSelectedTeam,selectedTeam} = useContext(BingoContext);
     const cards = [
         {
