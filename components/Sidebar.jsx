@@ -89,14 +89,40 @@ const SidebarContainer = styled.div`
   background-color: #1D1932;
   padding: 20px;
   padding-top: 120px;
+
+  @media (max-width:800px) {
+    position: fixed;
+    left: 0;
+    top:auto;
+    bottom: 0;
+    width: 100%;
+    height: 98px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+    
+    
+  }
+  a{
+    padding-top: 0;
+  }
 `;
 
 const IconItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
   cursor: pointer;
+  min-height: 100px;
+  justify-content: center;
+  min-width: 80px;
+  
 `;
 
 const IconDescription = styled.p`
@@ -110,4 +136,8 @@ const IconDescription = styled.p`
   font-family: 'Poppins';
   font-weight: 400;
   text-align: center;
+
+  @media (max-width:800px) {
+    display: none;
+  }
 `;
