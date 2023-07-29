@@ -3,16 +3,15 @@ import Web3 from 'web3';
 import SoccerCard from "../components/SoccerCard";
 import styled from "styled-components";
 import { Alchemy, Network } from "alchemy-sdk";
+import ColorsContext from '../Context/ColorsContext';
 import { backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2 } from "../colors/colors";
 
 
 function YourCollection() {
-   
+    
 
     const [userAddress, setUserAddress] = useState(null);
     const [nftsEspecificacoes, setNftsEspecificacoes] = useState([]);
-
-    
 
     const getNftByAdress = async () => {
 
@@ -70,8 +69,8 @@ function YourCollection() {
     }, []);
 
     return (
-        <>
-        <Container1>
+        <Wrap>
+            <Container1>
                 <div className='head'>
                     <h1> Minha Coleção </h1>
                 </div>
@@ -86,12 +85,12 @@ function YourCollection() {
                 </div>
             </Container1>
 
-            <Container>
-                <div className='head'>
-                    <h1> Coleção na sua Carteira </h1>
-                    {userAddress ? <h2>{userAddress}</h2> : <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
-                </div>
-
+                <Container>
+                    <div className='head'>
+                        <h1> Coleção na sua Carteira </h1>
+                        {userAddress ? <h2>{userAddress}</h2> : <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
+                    </div>
+    
                 <div className='cards'>
                     {nftsEspecificacoes.map((nfts) => (
 
@@ -102,13 +101,19 @@ function YourCollection() {
                 </div>
             </Container>
 
-        </>
+        </Wrap>
     )
 }
 
 export default YourCollection;
 
-const Container = styled.div`
+const Wrap = styled.div`
+        @media (max-width:700px) {
+            margin-right: 100px;
+        }
+    `
+
+    const Container = styled.div`
     display: flex;
     gap: 2rem;
     flex-direction: column;
@@ -118,10 +123,9 @@ const Container = styled.div`
     margin-top:75px;
     margin-bottom:75px;
 
-    @media (max-width: 1050px) {
-        
-        flex-direction: column;
-       gap: 50px;
+    .container {
+        display: flex;
+
     }
 
     .head{
@@ -134,12 +138,23 @@ const Container = styled.div`
             color: ${contrastColor};
             font-family: 'Poppins';
         }
+
+        @media (max-width: 1050px) {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
     }
 
     h1{
         color: ${contrastColor};
         font-family: 'Poppins';
         white-space: nowrap;
+    }
+    h2{
+        color: ${contrastColor};
+        font-family: 'Poppins';
+        
     }
 
     .walletButton {
@@ -200,11 +215,7 @@ const Container1 = styled.div`
         white-space: nowrap;
     }
 
-    h2{
-        color: ${contrastColor};
-        font-family: 'Poppins';
-        
-    }
+    
 
     .walletButton {
         background-color: #F09000;

@@ -4,7 +4,12 @@ import SoccerCard from "../components/SoccerCard";
 import { useContext, useEffect, useRef, useState } from "react";
 import BingoContext from "../Context/BingoContext";
 import ConfettiExplosion from 'react-confetti-explosion';
+
 import { backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2 } from "../colors/colors";
+
+import axios from 'axios';
+import ColorsContext from "../Context/ColorsContext";
+
 
 
 export default function OpenChest () {
@@ -57,15 +62,25 @@ export default function OpenChest () {
         setOpenChest(true);
     }
 
-    function generateRewards()
-    { 
+    function generateRewards() { 
         setPlayedGames(playedGames - 10);
         const indice1 = Math.floor(Math.random() * cards.length);
         const indice2 = Math.floor(Math.random() * cards.length);
         setSelectedCards([indice1,indice2]);
-
-        console.log(cards[indice1]);
-        console.log(cards[indice2]);
+     
+            const arr =[localStorage.getItem('token'),cards[indice1],cards[indice2]];
+            
+      
+            const promise =  axios.post("http://localhost:5000/postItensBau", arr);
+      
+            promise.then(resposta => {
+              console.log('Cards computados com sucesso!')
+            });
+      
+            promise.catch(erro => {
+              console.log(erro.response.data);
+              alert(erro.response.data.message || erro.response.data);
+            });
     }
     
 const Container = styled.div`

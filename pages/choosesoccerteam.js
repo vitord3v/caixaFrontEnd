@@ -50,6 +50,11 @@ const Container = styled.div`
 const SoccerCardContainer = styled.div`
     display:flex;
     gap: 2rem;
+
+    @media (max-width:1000px) {
+        display: flex;
+        flex-direction: column;
+    }
 `
 export default function ChooseSoccerTeam() {
     const selectRef = useRef();

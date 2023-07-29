@@ -14,6 +14,8 @@ const BetContainer = styled.div`
 
   @media (max-width: 768px) {
        width: calc(100% - 20px);
+
+       
     }
 
     p {
@@ -34,6 +36,12 @@ const BetContainer = styled.div`
         border: 2px solid ${contrastColor} !important;
         padding: 0;
         transition: all 200ms;
+
+        @media (max-width: 768px) {
+            padding: 1rem;
+            font-size: 14px;
+
+        }
 
         &:disabled{
         color: ${contrastColor2};

@@ -74,6 +74,7 @@ export default function Login() {
       email: email,
       password: senha
     }
+
     const promise = axios.post(`${process.env.NEXT_PUBLIC_URL}/login`, obj);
 
     promise.then(resposta => {
