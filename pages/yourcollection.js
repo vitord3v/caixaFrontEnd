@@ -26,7 +26,7 @@ function YourCollection() {
         const alchemy = new Alchemy(config)
 
         if (userAddress) {
-            const nfts = await alchemy.nft.getNftsForOwner(userAddress)
+            const nfts = await alchemy.nft.getNftsForOwner('0x500b86ae5D26A98c5acF602541D7Ad1F1E369B26')
             const nftList = nfts["ownedNfts"]
 
             const ownedNfts = nftList.filter((nft) => nft.contract.address === nftManiaContract)
@@ -92,6 +92,7 @@ function YourCollection() {
                         {userAddress ? <>
                         <button className='walletButton' disabled='true' > Carteira Conectada </button> 
                         <h2> Carteira conectada com endereço: <br/> {userAddress}</h2> 
+                        <h1>Minha coleção</h1>
                         </>
                         : 
                         <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
