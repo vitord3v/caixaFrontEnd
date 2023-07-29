@@ -6,11 +6,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import  LoginContext from "../Context/LoginContext";
-import { contrastColor, contrastColor2 } from "../colors/colors";
+import { backgroundColor, bingoColor, bingoColorDisabled, contrastColor, contrastColor2, darkColor, sidebarColor } from "../colors/colors";
 
 export default function Cabeçalho() {
 
   const { isLogged, setToken, token,user,setUser } = useContext(LoginContext);
+  const [showColorConfig,setShowColorConfig] = useState(false);
 
   const router = useRouter();
 
@@ -45,11 +46,77 @@ export default function Cabeçalho() {
           ) : (
             <MessageUser>{user ?"Bem-vindo(a)" : "" }{user ? user.nome : ''} </MessageUser>
           )}
+          <Image onClick={()=> setShowColorConfig(!showColorConfig)} src={'/pallete.png'} width={40} height={40}/>
         </PageContainerTopo>
       )}
+    {showColorConfig && 
+      <ColorConfigContainer>
+        <div className="color-cont">
+          <label htmlFor="main-color">Principal</label>
+          <input id="main-color" defaultValue={contrastColor} name="main-color" type="color" />
+        </div>
+        <div className="color-cont">
+          <label htmlFor="main-color">Secundaria</label>
+          <input id="main-color" defaultValue={contrastColor2} name="main-color" type="color" />
+        </div>
+        <div className="color-cont">
+          <label htmlFor="main-color">Botão selecionado</label>
+          <input id="main-color" defaultValue={bingoColor} name="main-color" type="color" />
+        </div>
+        <div className="color-cont">
+          <label htmlFor="main-color">Botão desligado</label>
+          <input id="main-color" defaultValue={bingoColorDisabled} name="main-color" type="color" />
+        </div>
+        <div className="color-cont">
+          <label htmlFor="main-color">Fundo</label>
+          <input id="main-color" defaultValue={backgroundColor} name="main-color" type="color" />
+        </div>
+        <div className="color-cont">
+          <label htmlFor="main-color">Sidebar</label>
+          <input id="main-color" defaultValue={sidebarColor} name="main-color" type="color" />
+        </div>
+        <div className="color-cont">
+          <label htmlFor="main-color">Escuras</label>
+          <input id="main-color" defaultValue={darkColor} name="main-color" type="color" />
+        </div>
+      </ColorConfigContainer>
+    }
     </>
   );
 }
+
+// onChange={(e) => contrastColor = e.target.value}
+
+const ColorConfigContainer = styled.div`
+background-color: ${sidebarColor};
+width: 200px;
+height: auto;
+position: fixed;
+right: 0;
+z-index: 4;
+top: 125px;
+.color-cont{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins';
+  gap: 10px;
+  width: 100%;
+  label{
+    margin-left: 5px;
+    margin-top: 5px;
+    color:${contrastColor};
+  }
+  input{
+    background-color: ${backgroundColor};
+    border: 0;
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+}
+}
+
+
+`;
 
 const PageContainerTopo = styled.div`
     display: flex;
@@ -64,6 +131,10 @@ const PageContainerTopo = styled.div`
     right:0;
     margin: 0;
     z-index: 3;
+
+    img{
+      cursor: pointer;
+    }
 
     @media (max-width:800px) {
       width:calc(100%);

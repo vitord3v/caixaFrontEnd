@@ -27,13 +27,13 @@ export default function OpenChest () {
             alt:''
         },
         {
-            name:'Placeholder',
-            source:'/placeholder.png',
+            name:'O brilho de 97',
+            source:'/obrilho97.png',
             alt:''
         },
         {
-            name:'Placeholder',
-            source:'/placeholder.png',
+            name:'Monumental',
+            source:'/monumental.png',
             alt:''
         },
         {
@@ -62,6 +62,9 @@ export default function OpenChest () {
         const indice1 = Math.floor(Math.random() * cards.length);
         const indice2 = Math.floor(Math.random() * cards.length);
         setSelectedCards([indice1,indice2]);
+
+        console.log(cards[indice1]);
+        console.log(cards[indice2]);
     }
 
     return (
@@ -110,8 +113,8 @@ export default function OpenChest () {
                 </div>
                 <div className="cards">
                 { openChest && <ConfettiExplosion/>}
-                <SoccerCard alt_text={cards[selectedCards[1]].alt} turned={openChest == true ? false : true} name={cards[selectedCards[0]].name} source={cards[selectedCards[1]].source} />
-                <SoccerCard alt_text={cards[selectedCards[1]].alt} turned={openChest == true ? false : true} name={cards[selectedCards[1]].name} source={cards[selectedCards[1]].source}/>
+                <SoccerCard show={false} alt_text={cards[selectedCards[0]].alt} turned={openChest == true ? false : true} name={cards[selectedCards[0]].name} source={cards[selectedCards[0]].source} />
+                <SoccerCard show={false} alt_text={cards[selectedCards[1]].alt} turned={openChest == true ? false : true} name={cards[selectedCards[1]].name} source={cards[selectedCards[1]].source}/>
                 </div>
             </Container>
         </>

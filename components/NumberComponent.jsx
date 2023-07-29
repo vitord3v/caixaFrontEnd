@@ -1,4 +1,4 @@
-import { contrastColor } from "../colors/colors";
+import { contrastColor, darkColor } from "../colors/colors";
 
 export default function NumberComponent({number})
 {
@@ -13,7 +13,7 @@ export default function NumberComponent({number})
 
 const SCNComponent = styled.div`
     background-color: ${contrastColor};
-    color: black;
+    color: ${darkColor};
     width: 47px;
     height: 47px;
     border-radius: 50%;

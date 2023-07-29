@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { backgroundColor, contrastColor } from '../colors/colors';
+import { backgroundColor, contrastColor, darkColor } from '../colors/colors';
 import { useContext } from 'react';
 import BingoContext from '../Context/BingoContext';
 import { useRouter } from 'next/router';
@@ -20,6 +20,7 @@ const OpenChestContainer = styled.div`
     
     button {
         border:0;
+        color: ${darkColor};
         width: 117px;
         height: 39px;
         border-radius: 30px;
