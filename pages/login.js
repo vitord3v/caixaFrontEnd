@@ -23,6 +23,13 @@ export default function Login() {
     const promise = axios.post("http://localhost:5000/login", obj);
 
     promise.then(resposta => {
+
+      localStorage.setItem("token", resposta.data.token);
+      console.log(localStorage.getItem("token"))
+      localStorage.setItem("user", resposta.data.nome);
+      localStorage.setItem("userid", resposta.data._id);
+      
+      console.log(resposta.data, "informações localstorage");
      
       router.push("/");
 
@@ -49,7 +56,7 @@ export default function Login() {
 
       </form>
 
-      <Link href="/game_page">
+      <Link href="/cadastro">
         <Cadastro>Primeira vez? Cadastre-se!</Cadastro>
       </Link>
 
