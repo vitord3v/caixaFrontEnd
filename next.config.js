@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains:['i.seadn.io']
+    domains:['i.seadn.io','ipfs','nft-cdn.alchemy.com']
   }
 }
 
