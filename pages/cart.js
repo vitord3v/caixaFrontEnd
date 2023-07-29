@@ -27,12 +27,12 @@ export default function Cart() {
     return (
         <Container>
             <GameHeader><h1>Jogo</h1><h2>Time</h2></GameHeader>
-            {games.map(game =>{
+            {games.map((game,index) =>{
                 const teamName = game[game.length];
                 console.log(teamName);
                 game.pop();
                 return(
-                    <Game>{game.map(n => {return n.toString() + ' - '})}{teamName}</Game>
+                    <Game key={index}>{game.map(n => {return n.toString() + ' - '})}{teamName}</Game>
                 );
             })}
         </Container>

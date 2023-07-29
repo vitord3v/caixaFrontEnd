@@ -7,7 +7,7 @@ import { finishColorDisabled } from "../colors/colors";
 import ConfettiExplosion from 'react-confetti-explosion';
 
 
-export default function openChest () {
+export default function OpenChest () {
 
     const selectRef = useRef();
     const [selectedCards,setSelectedCards] = useState([0,0]);
