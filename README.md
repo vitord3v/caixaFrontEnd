@@ -5,4 +5,4 @@
 * NextJS 12
 * Styled Components
 * Alchemy SDK
-* Web.js SDK
+* Web3.js SDK
