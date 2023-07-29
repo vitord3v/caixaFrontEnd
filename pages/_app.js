@@ -6,6 +6,7 @@ import Cabecalho from "../components/Cabecalho"
 import Sidebar from "../components/Sidebar"
 import BingoContext from '../Context/BingoContext';
 import { useState } from "react";
+import { LoginProvider } from '../Context/LoginContext';
 
 const theme = {
   colors: {
@@ -19,14 +20,16 @@ export default function App({ Component, pageProps }) {
   const [selectedTeam, setSelectedTeam] = useState("Selecione seu time");
   const [playedGames, setPlayedGames] = useState(0);
   return (
-    <BingoContext.Provider value={{ selectedNumbers, setSelectedNumbers, games, setGames, playedGames, setPlayedGames, selectedTeam, setSelectedTeam }}>
-      <ResetStyle />
-      <GlobalStyle />
-      <Cabecalho />
-      <Sidebar />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </BingoContext.Provider>
+    <LoginProvider>
+      <BingoContext.Provider value={{ selectedNumbers, setSelectedNumbers, games, setGames, playedGames, setPlayedGames, selectedTeam, setSelectedTeam }}>
+        <ResetStyle />
+        <GlobalStyle />
+        <Cabecalho />
+        <Sidebar />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </BingoContext.Provider>
+    </LoginProvider>
   );
 }
