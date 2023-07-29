@@ -45,6 +45,11 @@ function YourCollection() {
         font-family: 'Poppins';
         white-space: nowrap;
     }
+    h2{
+        color: ${contrastColor};
+        font-family: 'Poppins';
+        
+    }
 
     .walletButton {
         background-color: #F09000;
@@ -103,6 +108,8 @@ const Container1 = styled.div`
         font-family: 'Poppins';
         white-space: nowrap;
     }
+
+    
 
     .walletButton {
         background-color: #F09000;
@@ -204,7 +211,7 @@ const Container1 = styled.div`
             <Container>
                 <div className='head'>
                     <h1> Coleção na sua Carteira </h1>
-                    <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>
+                    {userAddress ? <h2>{userAddress}</h2> : <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
                 </div>
 
                 <div className='cards'>
