@@ -4,22 +4,23 @@ import BetGame from './BetGame';
 import { bingoColor, finishColorDisabled } from '../colors/colors';
 import { useContext, useEffect, useRef } from 'react';
 import BingoContext from '../Context/BingoContext';
+import { useRouter } from 'next/router';
 
 export default function Bingo() {
   const cells = Array.from({ length: 80 }, (_, i) => i + 1);
   const selectRef = useRef();
+  const router = useRouter();
   const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames,setSelectedTeam,selectedTeam} = useContext(BingoContext);
   function bet()
   {
-    setGames([...games,[...selectedNumbers]])
+    setGames([...games,[...selectedNumbers,selectedTeam]])
     setSelectedNumbers([]);
   }
 
   function finish()
   {
-    setGames([]);
-    setSelectedNumbers([]);
-    setPlayedGames(playedGames + games.length);
+    router.push('/cart');
+    return;
   }
 
   return (

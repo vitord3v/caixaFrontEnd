@@ -27,13 +27,23 @@ export default function openChest () {
             alt:''
         },
         {
-            name:'Silêncio no maraca',
-            source:'/soccer-player.svg',
+            name:'Placeholder',
+            source:'/placeholder.png',
             alt:''
         },
         {
-            name:'Silêncio no maraca',
-            source:'/soccer-player.svg',
+            name:'Placeholder',
+            source:'/placeholder.png',
+            alt:''
+        },
+        {
+            name:'Placeholder',
+            source:'/placeholder.png',
+            alt:''
+        },
+        {
+            name:'Placeholder',
+            source:'/placeholder.png',
             alt:''
         },
     ];

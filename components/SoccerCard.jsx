@@ -7,7 +7,7 @@ function SoccerCard ({name, turned,source,alt_text}) {
     return (
         <Card turned={turned.toString()}>
             <div className='front'>
-                <Image src={ source ? source.toString() : '/soccer-player.svg'} width='216' height='240' alt={alt_text} />
+                <Image src={ source !=='' ? source.toString() : '/placeholder.png'} width='216' height='240' alt={alt_text} />
                 <p>{name}</p>
             </div>
             <div className='back'>
