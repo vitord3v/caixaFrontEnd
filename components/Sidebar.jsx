@@ -7,11 +7,16 @@ import Trevo from "../img/trevo.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useContext } from "react";
+import LoginContext from "../Context/LoginContext";
+import { bingoColor } from "../colors/colors";
+import Swal from "sweetalert2";
 
 export default function Sidebar() {
 
   const router = useRouter();
 
+  const {setUser} = useContext(LoginContext);
   const showSidebar = router.pathname !== "/login" && router.pathname !== "/cadastro";
 
   const icons = [
@@ -24,11 +29,25 @@ export default function Sidebar() {
   const logoutIcon = { id: 5, src: Sair, description: 'Deslogar', width: 28, height: 28 };
 
   function handleLogoutClick() {
+
+    Swal.fire({
+      title: `<span style="font-family: 'Mulish', sans-serif;font-size: 20px;color:black">Sair?</span>`,
+      showCancelButton: true,
+      confirmButtonColor: '#c9c9c9',
+      cancelButtonColor: `${bingoColor}`,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Cancelar',
+      width: 300,
+      heightAuto: false,
+  }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("userid");
+        window.location.reload();
+  }});
    
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      router.push("/");
-  
+      
   }
 
   return (
@@ -77,6 +96,7 @@ const IconItem = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 50px;
+  cursor: pointer;
 `;
 
 const IconDescription = styled.p`

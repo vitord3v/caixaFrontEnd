@@ -22,6 +22,8 @@ yarn
 yarn.lock
 .lock
 
+.env
+
 # misc
 .DS_Store
 *.pem

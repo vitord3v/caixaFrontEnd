@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components"
 import Logomarca from "../components/Logomarca";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
+import  LoginContext  from "../Context/LoginContext";
 
 export default function Login() {
 
@@ -11,6 +12,7 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const {setUser} = useContext(LoginContext);
 
   function enviarInfos(e) {
     e.preventDefault();
@@ -25,14 +27,10 @@ export default function Login() {
     promise.then(resposta => {
 
       localStorage.setItem("token", resposta.data.token);
-      console.log(localStorage.getItem("token"))
       localStorage.setItem("user", resposta.data.nome);
       localStorage.setItem("userid", resposta.data._id);
-      
-      console.log(resposta.data, "informações localstorage");
-     
+      setUser(resposta.data);
       router.push("/");
-
     });
 
     promise.catch(erro => {

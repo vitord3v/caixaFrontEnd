@@ -5,36 +5,27 @@ import Rectangle2 from "../img/Rectangle2.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { LoginContext } from "../Context/LoginContext";
+import  LoginContext from "../Context/LoginContext";
 
 export default function Cabeçalho() {
 
-  const { isLogged, setToken, token } = useContext(LoginContext);
+  const { isLogged, setToken, token,user,setUser } = useContext(LoginContext);
 
   const router = useRouter();
 
-  const [user, setUser] = useState('');
-
-  console.log(token);
-
   useEffect(() => {
+    const localStorageUser = localStorage.getItem("user");
+
+    setUser({
+      nome:localStorageUser
+    });
+
     isLogged();
-  }, []);
-
-  useEffect(() => {
-    
-    if (typeof window !== 'undefined') {
-      const userFromLocalStorage = localStorage.getItem('user');
-      setUser(userFromLocalStorage);
-    }
   }, []);
 
   function fazerLogin() {
     router.push("/login");
 }
-
-  
-
   const showHeader = router.pathname !== "/login" && router.pathname !== "/cadastro";
 
   return (
@@ -48,10 +39,10 @@ export default function Cabeçalho() {
               <Image src={Rectangle2} width={200} height={6} alt="Rectangle2" />
             </TracosLogo>
           </Container>
-          {!token ? (
+          { user && user.nome == undefined ? (
             <Button onClick={fazerLogin} className='Login'>Login</Button>
           ) : (
-            <MessageUser>Bem-vindo(a) {user} </MessageUser>
+            <MessageUser>{user ?"Bem-vindo(a)" : "" }{user ? user.nome : ''} </MessageUser>
           )}
         </PageContainerTopo>
       )}
