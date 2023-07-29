@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useContext } from "react";
 import LoginContext from "../Context/LoginContext";
-import { bingoColor } from "../colors/colors";
+import { backgroundColor, bingoColor, contrastColor, contrastColor2, darkColor, sidebarColor } from "../colors/colors";
 import Swal from "sweetalert2";
 
 export default function Sidebar() {
@@ -31,12 +31,15 @@ export default function Sidebar() {
   function handleLogoutClick() {
 
     Swal.fire({
-      title: `<span style="font-family: 'Mulish', sans-serif;font-size: 20px;color:black">Sair?</span>`,
+      title: `<span style="font-family: 'Poppins', sans-serif;font-size: 20px;color:${contrastColor}">Sair?</span>`,
       showCancelButton: true,
-      confirmButtonColor: '#c9c9c9',
+      confirmButtonColor: `${contrastColor2}`,
       cancelButtonColor: `${bingoColor}`,
       confirmButtonText: 'Sim',
+      color:contrastColor,
+      buttonsStyling:true,
       cancelButtonText: 'Cancelar',
+      background:backgroundColor,
       width: 300,
       heightAuto: false,
   }).then((result) => {
@@ -86,7 +89,7 @@ const SidebarContainer = styled.div`
   z-index: 3;
   top: 0;
   width: 98px;
-  background-color: #1D1932;
+  background-color:${sidebarColor} ;
   padding: 20px;
   padding-top: 120px;
   *{
@@ -131,6 +134,12 @@ const IconItem = styled.div`
   justify-content: center;
   min-width: 80px;
 
+  &:hover{
+    *{
+      color:${contrastColor};
+    }
+  }
+
   @media (max-width:400px) {
     width: 100%;
     max-width: 40px;
@@ -141,7 +150,7 @@ const IconItem = styled.div`
 
 const IconDescription = styled.p`
   font-size: 16px;
-  color: #858585;
+  color: ${contrastColor2};
   margin-top: 8px;
   width: 100px;
   display: flex;

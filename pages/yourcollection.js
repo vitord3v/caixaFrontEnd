@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Web3 from 'web3';
 import SoccerCard from "../components/SoccerCard";
 import styled from "styled-components";
-import { bingoColor } from '../colors/colors';
+import { bingoColor, contrastColor } from '../colors/colors';
 
 import { Alchemy, Network } from "alchemy-sdk";
 
@@ -28,13 +28,13 @@ const Container = styled.div`
         justify-content: center;
 
         .wallet{
-            color: white;
+            color: ${contrastColor};
             font-family: 'Poppins';
         }
     }
 
     h1{
-        color: white;
+        color: ${contrastColor};
         font-family: 'Poppins';
         white-space: nowrap;
     }
@@ -53,7 +53,7 @@ const Container = styled.div`
         border: 1px solid transparent;
         &:hover{
             color: ${bingoColor};
-            background-color: white;
+            background-color: ${contrastColor};
             border: 1px solid ${bingoColor};
         }
     }

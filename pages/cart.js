@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import SoccerCard from '../components/SoccerCard'
 import { useContext, useRef, useState } from 'react';
 import BingoContext from '../Context/BingoContext';
-import { bingoColor } from '../colors/colors';
+import { backgroundColor, bingoColor, contrastColor, contrastColor2, darkColor } from '../colors/colors';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
@@ -23,7 +23,7 @@ const Container = styled.div`
     position: fixed;
     left: 50%;
     top: 50%;
-    color: white;
+    color: ${contrastColor};
     white-space: nowrap !important;
     transform: translate(-50%,-50%);
    }
@@ -36,7 +36,7 @@ const Container = styled.div`
         background-color: ${bingoColor};
         &:hover{
             border: 1px solid ${bingoColor};
-            background-color: white;
+            background-color: ${contrastColor};
         }
     }
 `
@@ -65,12 +65,15 @@ export default function Cart() {
     }
     function finish() {
         Swal.fire({
-            title: `<span style="font-family: 'Mulish', sans-serif;font-size: 20px;color:black">Confirmar o envio destes ${games.length} jogos?</span>`,
+            title: `<span style="font-family: 'Poppins', sans-serif;font-size: 20px;color:${contrastColor}">Confirmar o envio destes ${games.length} jogos?</span>`,
             showCancelButton: true,
-            confirmButtonColor: `${bingoColor}`,
-            cancelButtonColor: `ligthgray`,
+            confirmButtonColor: `${contrastColor2}`,
+            cancelButtonColor: `${bingoColor}`,
             confirmButtonText: 'Sim',
-            cancelButtonText: 'Não',
+            color:contrastColor,
+            buttonsStyling:true,
+            cancelButtonText: 'Cancelar',
+            background:backgroundColor,
             width: 300,
             heightAuto: false,
         }).then((result) => {
@@ -113,7 +116,7 @@ const Game = styled.div`
     max-width: 680px;
     border: 1px solid #FFF;
     border-radius: 20px;
-    color: white;
+    color: ${contrastColor};
     height: 40px;
     display: flex;
     align-items: center;
@@ -125,7 +128,7 @@ const Game = styled.div`
     font-weight: 500;
     padding-right: 20px;
     p{
-        color: white;
+        color: ${contrastColor};
     }
 `;
 
@@ -134,7 +137,7 @@ const GameHeader = styled.div`
     width: 100%;
     max-width: 680px;
     border-radius: 20px;
-    color: white;
+    color: ${contrastColor};
     height: 40px;
     display: flex;
     align-items: center;
@@ -144,7 +147,7 @@ const GameHeader = styled.div`
    
 
     *{
-        color:white;
+        color:${contrastColor};
         font-family: 'Poppins';
         font-size: 20px;
         font-style: normal;

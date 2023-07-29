@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components'
 import BingoContext from '../Context/BingoContext';
+import { contrastColor, contrastColor2 } from '../colors/colors';
 
 const BetContainer = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const BetContainer = styled.div`
     }
 
     p {
-        color:white;
+        color:${contrastColor};
         font-family: 'Poppins';
         font-size: 23px;
     }
@@ -28,17 +29,18 @@ const BetContainer = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 2px solid #B4B4B4 !important;
+        color: ${contrastColor};
+        border: 2px solid ${contrastColor} !important;
         padding: 0;
         transition: all 200ms;
 
         &:disabled{
-        color: lightgray;
+        color: ${contrastColor2};
       }
 
         &:enabled{
           &:hover{
-          color: lightgray;
+          color: ${contrastColor2};
         }
         }
     }

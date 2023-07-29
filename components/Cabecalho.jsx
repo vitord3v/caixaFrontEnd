@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import  LoginContext from "../Context/LoginContext";
+import { contrastColor, contrastColor2 } from "../colors/colors";
 
 export default function Cabeçalho() {
 
@@ -72,9 +73,9 @@ const Button = styled.button`
     width: 140px;
     height: 42px;
     border-radius: 40px;
-    border: 2px solid lightgray;
+    border: 2px solid ${contrastColor2};
     display: flex;
-    color: lightgray;
+    color: ${contrastColor2};
     align-items: center;
     justify-content: center;
     background-color: #131129;
@@ -86,7 +87,7 @@ const MessageUser = styled.h1`
     font-family: 'Poppins';
     font-weight: 400;
     font-size: 20px;
-    color: white;
+    color: ${contrastColor};
     margin-left:60px;
 `
 const TracosLogo = styled.div`

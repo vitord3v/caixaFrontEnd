@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import  LoginContext  from "../Context/LoginContext";
+import { bingoColor, contrastColor, darkColor } from "../colors/colors";
 
 export default function Login() {
 
@@ -48,7 +49,7 @@ export default function Login() {
 
         <Logomarca />
 
-        <Input1 placeholder="E-mail" type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input placeholder="E-mail" type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input placeholder="Senha" type="password" autoComplete="new-password" id="senha" value={senha} onChange={(e) => setSenha(e.target.value)} required />
         <button type="submit">Entrar</button>
 
@@ -63,25 +64,53 @@ export default function Login() {
 }
 
 const SingInContainer = styled.section`
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color:#131129;
+  padding: 20px;
+  overflow: hidden;
+
+  input{
+    background-color: ${contrastColor};
+    color: ${darkColor};
+    width: calc(100%);
+    max-width: 500px;
+    min-width: 200px;
+    box-sizing: border-box;
+  }
+
 
   button{
-    width: calc(100% - 1500px);
-    background-color: #F09000;
+    width: calc(100%);
+    max-width: 500px;
+    min-width: 200px;
+    border: 1px solid rgba(0,0,0,0);
+    background-color: ${bingoColor};
+    transition: all 200ms;
+    
+    &:hover{
+      border: 1px solid ${bingoColor};
+      background-color: ${contrastColor};
+      color: ${bingoColor};
+    }
   }
-`
 
-const Input1 = styled.input`
+  a{
+    transition: all 200ms;
+    &:hover{
+      h1{
+        transition: all 200ms;
+        color: ${bingoColor};
+      }
+    }
+  }
 `
 
 const Cadastro = styled.h1`
     font-family: 'Poppins';
     font-weight: 400;
     font-size: 20px;
-    color: white;
+    color: ${contrastColor};
 `

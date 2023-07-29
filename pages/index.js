@@ -4,6 +4,7 @@ import OpenChest from "../components/OpenChest";
 import Bingo from "../components/Bingo";
 import { useContext } from "react";
 import BingoContext from "../Context/BingoContext";
+import { contrastColor } from "../colors/colors";
 
 const Container = styled.div`
     display: flex;
@@ -11,7 +12,7 @@ const Container = styled.div`
     justify-content: center;
     gap: 100px;
     margin-bottom: 100px;
-    color: white;
+    color: ${contrastColor};
     margin-top: 100px;
 
     @media (max-width: 768px) {
@@ -27,14 +28,14 @@ const BetContainer = styled.div`
     h1 {
         margin-bottom: 2rem;
         font-size: 32px;
-        color:white;
+        color:${contrastColor};
         font-family: 'Poppins';
     }
 
     p {
         font-size: 64px;
         font-family: 'Poppins';
-        color: white;
+        color: ${contrastColor};
     }
 
     .inner2{
@@ -72,7 +73,7 @@ const PageContainer = styled.div`
 
 const ChestContainer = styled.div`
     padding: 1rem;
-    border:1px solid white;
+    border:1px solid ${contrastColor};
     border-radius: 40px;
     max-width:650px;
     
@@ -84,7 +85,7 @@ const ChestContainer = styled.div`
     p {
         font-family: 'Poppins';
         font-size: 14px;
-        color: white;
+        color: ${contrastColor};
     }
 
     h1{
