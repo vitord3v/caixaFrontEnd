@@ -88,7 +88,12 @@ function YourCollection() {
                 <Container>
                     <div className='head'>
                         <h1> Coleção na sua Carteira </h1>
-                        {userAddress ? <h2>{userAddress}</h2> : <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
+                        {userAddress ? <>
+                        <button className='walletButton' disabled='true' > Carteira Conectada </button> 
+                        <h2> Carteira conectada com endereço: <br/> {userAddress}</h2> 
+                        </>
+                        : 
+                        <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
                     </div>
     
                 <div className='cards'>
@@ -130,9 +135,17 @@ const Wrap = styled.div`
 
     .head{
         display: flex;
+        flex-direction: column;
+        gap:2rem;
         align-items: center;
         justify-content: space-around;
         width:894px;
+
+        text-align: center;
+
+        h2 {
+            margin-bottom: 1rem;
+        }
 
         .wallet{
             color: ${contrastColor};
