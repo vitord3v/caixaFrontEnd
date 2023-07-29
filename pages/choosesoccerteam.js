@@ -51,7 +51,7 @@ const SoccerCardContainer = styled.div`
     display:flex;
     gap: 2rem;
 `
-function chooseSoccerTeam() {
+export default function ChooseSoccerTeam() {
     const selectRef = useRef();
     const [slTeam,setSlTeam] = useState("Selecione seu time");
     return (
@@ -88,10 +88,8 @@ function chooseSoccerTeam() {
             </div>
             <SoccerCardContainer>
                 <SoccerCard turned={false} name='Silêncio no maraca' source='/soccer-player.svg' alt_text='' />
-                <SoccerCard turned={false} name='Silêncio no maraca' source='/soccer-player.svg' alt_text='' />
+                <SoccerCard turned={false} name='Dinamite' source='/dinamite.png' alt_text='' />
             </SoccerCardContainer>
         </Container>
     )
 }
-
-export default chooseSoccerTeam
