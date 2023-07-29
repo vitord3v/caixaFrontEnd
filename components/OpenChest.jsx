@@ -46,6 +46,7 @@ const OpenChestContainer = styled.div`
         height: 39px;
         border-radius: 30px;
         font-weight: 500;
+        color: black;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -55,7 +56,7 @@ const OpenChestContainer = styled.div`
         transition: all 200ms;
         &:hover{
             background-color: ${contrastColor};
-            color: ${backgroundColor};
+            color: ${bingoColor};
         }
     }
 `

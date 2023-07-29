@@ -123,7 +123,7 @@ export default function OpenChest () {
                         <p>2º</p>
                         <p> Abra o seu Baú </p>
                         <Image src='/chest.png' width='362' height='266' alt="Baú dourado" />
-                        <button disabled={slTeam == "Selecione seu time" ? true : playedGames >= -1 && !openingChest ? false : true} onClick={open}>
+                        <button disabled={slTeam == "Selecione seu time" ? true : playedGames >= 10 && !openingChest ? false : true} onClick={open}>
                             { slTeam == "Selecione seu time" ? "Selecione seu time" : playedGames >= 10 && !openingChest ? "Abrir" : "Nenhum baú a abrir"}
                             
                         </button>

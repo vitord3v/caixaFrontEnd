@@ -20,7 +20,7 @@ function YourCollection() {
         const nftManiaContract = "0x1882b841564a11675729abff14c2b6ecbb5dfb14"
 
         const config = {
-            apiKey: '-uTYzNDjfm7ac3cAPERTDB4ZE995HPqH',
+            apiKey: process.env.NEXT_PUBLIC_API,
             network: Network.MATIC_MAINNET,
         };
         const alchemy = new Alchemy(config)
