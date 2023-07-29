@@ -97,6 +97,11 @@ const Container = styled.div`
     justify-content:center;
     position: relative;
 
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      display: flex;
+    }
+
     .main-container{
       display: flex;
       align-items: center;
@@ -226,5 +231,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
+
+
 
 `;

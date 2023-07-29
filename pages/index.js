@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { styled } from 'styled-components'
+import styled from 'styled-components'
 import OpenChest from "../components/OpenChest";
 import Bingo from "../components/Bingo";
 import { useContext } from "react";
@@ -13,6 +13,10 @@ const Container = styled.div`
     margin-bottom: 100px;
     color: white;
 
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 50px;
+    }
 `
 
 const BetContainer = styled.div`
@@ -41,7 +45,6 @@ const BetContainer = styled.div`
 `;
 
 const PageContainer = styled.div`
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,6 +52,11 @@ const PageContainer = styled.div`
     margin-left: 140px;
     margin-top: 50px;
 
+    @media (max-width: 768px) {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 const ChestContainer = styled.div`
@@ -70,7 +78,11 @@ const ChestContainer = styled.div`
     h1{
         font-family: 'Poppins';
     }
-    
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        height: auto;
+    }
 `
 
 export default function Home() {
@@ -102,4 +114,3 @@ export default function Home() {
         </PageContainer>
     );
 }
-
