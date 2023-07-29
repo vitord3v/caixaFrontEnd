@@ -11,6 +11,7 @@ const Container = styled.div`
     margin-left: 2rem;
     margin-top: 150px;
     color: white;
+    margin-bottom: 200px;
     select{
       font-family: 'Poppins';
       width: 235px;

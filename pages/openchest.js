@@ -92,9 +92,9 @@ justify-content: center;
 margin-top: 150px;
 margin-bottom: 150px;
 @media (max-width: 1050px) {
-    
     flex-direction: column;
-   gap: 50px;
+    gap: 50px;
+    margin-right: 200px;
 }
 
 select{
