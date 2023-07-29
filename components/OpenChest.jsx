@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { backgroundColor } from '../colors/colors';
+import { backgroundColor, contrastColor } from '../colors/colors';
 import { useContext } from 'react';
 import BingoContext from '../Context/BingoContext';
 import { useRouter } from 'next/router';
@@ -14,7 +14,7 @@ const OpenChestContainer = styled.div`
     position: absolute;
 
     p {
-        color: white;
+        color: ${contrastColor};
         font-family: 'Poppins';
     }
     
@@ -28,11 +28,11 @@ const OpenChestContainer = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: gray;
+        background-color: ${contrastColor};
         font-family: 'Poppins';
         transition: all 200ms;
         &:hover{
-            background-color: lightgray;
+            background-color: ${contrastColor};
             color: ${backgroundColor};
         }
     }

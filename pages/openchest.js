@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SoccerCard from "../components/SoccerCard";
 import { useContext, useEffect, useRef, useState } from "react";
 import BingoContext from "../Context/BingoContext";
-import { finishColorDisabled } from "../colors/colors";
+import { contrastColor, finishColorDisabled } from "../colors/colors";
 import ConfettiExplosion from 'react-confetti-explosion';
 
 
@@ -126,18 +126,26 @@ const Container = styled.div`
     font-size: 2rem;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    @media (max-width: 1050px) {
+        
+        flex-direction: column;
+       gap: 50px;
+    }
 
     select{
       font-family: 'Poppins';
       width: 235px;
       height: 42px;
-      color:white;
+      color:${contrastColor};
       border-radius: 40px;
       border: 2px solid #B4B4B4;
       background: rgba(217, 217, 217, 0.00);
       padding:10px;
       text-align: center;
+
+    
       
       cursor: pointer;
       option{
@@ -165,7 +173,7 @@ const Container = styled.div`
 
     button {
         background: transparent;
-        border: 2px solid white;
+        border: 2px solid ${contrastColor};
         font-family: 'Poppins';
         &:disabled{
             cursor:not-allowed;
@@ -182,11 +190,11 @@ const ChooseTeamContainer = styled.div`
     font-family: 'Poppins';
     
     p{
-        color: white;
+        color: ${contrastColor};
     }
     button {
         background: transparent;
-        border: 2px solid white;
+        border: 2px solid ${contrastColor};
     }
 `
 
@@ -200,7 +208,7 @@ const ChestContainer = styled.div`
      P {
         margin-bottom: 1rem;
         font-family: 'Poppins';
-        color: white;
+        color: ${contrastColor};
      }
 
      button {

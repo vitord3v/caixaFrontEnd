@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import  LoginContext from "../Context/LoginContext";
+import { contrastColor, contrastColor2 } from "../colors/colors";
 
 export default function Cabeçalho() {
 
@@ -56,18 +57,25 @@ const PageContainerTopo = styled.div`
     align-items: center;
     height: 120px;
     background-color: #131129;
-    width:100%;
+    width:calc(100% - 98px);
     box-shadow: 0px 4px 4px 0px #00000026;
+    position: fixed;
     top: 0;
-    left:0;
+    right:0;
+    margin: 0;
+    z-index: 3;
+
+    @media (max-width:800px) {
+      width:calc(100%);
+  }
 `
 const Button = styled.button`
     width: 140px;
     height: 42px;
     border-radius: 40px;
-    border: 2px solid lightgray;
+    border: 2px solid ${contrastColor2};
     display: flex;
-    color: lightgray;
+    color: ${contrastColor2};
     align-items: center;
     justify-content: center;
     background-color: #131129;
@@ -79,7 +87,7 @@ const MessageUser = styled.h1`
     font-family: 'Poppins';
     font-weight: 400;
     font-size: 20px;
-    color: white;
+    color: ${contrastColor};
     margin-left:60px;
 `
 const TracosLogo = styled.div`
@@ -87,8 +95,28 @@ const TracosLogo = styled.div`
     justify-content:space-between;
     align-items: center;
     width: 300px;
+    @media (max-width:800px) {
+      justify-content:flex-start;
+  }
+    img{
+      @media (max-width:800px) {
+      width: 80px !important;
+      height: 5px !important;
+  }
+}
+
 `
 const Container = styled.div`
     height: auto;
     width:300px;
+    img{
+      @media (max-width:800px) {
+          width: 200px;
+          height: 40px;
+      }
+    }
+
+    @media (max-width:800px) {
+      width: 200px;
+  }
 `

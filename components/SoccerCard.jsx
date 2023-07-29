@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import back from '../img/back.png';
+
 import { backgroundColor } from '../colors/colors';
+import { contrastColor } from '../colors/colors';
 
 function SoccerCard ({name, turned,source,alt_text,quantidade}) {
 
@@ -73,12 +75,11 @@ const Card = styled.div`
         margin-top: 10px;
         font-family: 'Poppins';
         font-size: 20px;
-        color: white;
-        
+        color: ${contrastColor};
     }
 
     .front{
-        border: 2px solid white;
+        border: 2px solid ${contrastColor};
         box-sizing: border-box;
         border-radius: 40px;
         border-top: 0;
@@ -113,7 +114,7 @@ const Card = styled.div`
     }
 
     .back{
-        border: 2px solid white;
+        border: 2px solid ${contrastColor};
         box-sizing: border-box;
         border-radius: 40px;
         transform:${(props) => props.turned == 'false' ? ' rotateY(180deg)' : 'rotateY(0deg)'};

@@ -4,6 +4,7 @@ import Logomarca from "../components/Logomarca";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { bingoColor, contrastColor, darkColor } from "../colors/colors";
 
 export default function SignUpPage() {
 
@@ -81,7 +82,7 @@ function handleChangeDataNascimento(e) {
 
         <Logomarca />
 
-        <Input2 placeholder="Nome" type="text" id="nome" value={name} onChange={(e) => setName(e.target.value)} required />
+        <input placeholder="Nome" type="text" id="nome" value={name} onChange={(e) => setName(e.target.value)} required />
         <input placeholder="E-mail" type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input type="text" value={cpf} onChange={handleCPFChange} placeholder="000.000.000-00" maxLength="14" required />
         <input type="date" id="dataNascimento" value={dataNascimento} onChange={handleChangeDataNascimento} required />
@@ -108,18 +109,48 @@ const SingUpContainer = styled.section`
   align-items: center;
   background-color:#131129;
 
-  button{
-    width: calc(100% - 1500px);
-    background-color: #F09000;
-  }
-`
+  padding: 20px;
+  overflow: hidden;
 
-const Input2 = styled.input`
+  input{
+    background-color: ${contrastColor};
+    color: ${darkColor};
+    width: calc(100%);
+    max-width: 500px;
+    min-width: 200px;
+    box-sizing: border-box;
+  }
+
+
+  button{
+    width: calc(100%);
+    max-width: 500px;
+    min-width: 200px;
+    border: 1px solid rgba(0,0,0,0);
+    background-color: ${bingoColor};
+    transition: all 200ms;
+    
+    &:hover{
+      border: 1px solid ${bingoColor};
+      background-color: ${contrastColor};
+      color: ${bingoColor};
+    }
+  }
+
+  a{
+    transition: all 200ms;
+    &:hover{
+      h1{
+        transition: all 200ms;
+        color: ${bingoColor};
+      }
+    }
+  }
 `
 const Login = styled.h1`
     font-family: 'Poppins';
     font-weight: 400;
     font-size: 20px;
-    color: white;
+    color: ${contrastColor};
     text-align:center;
 `

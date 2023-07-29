@@ -1,11 +1,12 @@
 import { createGlobalStyle } from "styled-components";
+import { backgroundColor, contrastColor } from "../colors/colors";
 
 const GlobalStyle = createGlobalStyle`
     * {
         font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
-        color:black;
+        color:${backgroundColor};
     }
     button {
         outline: none;
@@ -21,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     h1 {
         font-weight: 700;
         font-size: 26px;
-        color: black;
+        color: ${backgroundColor};
     }
     input {
         font-size: 20px;
@@ -49,7 +50,7 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 700;
         font-size: 15px;
         line-height: 18px;
-        color: white;
+        color: ${contrastColor};
         text-decoration: none;
         padding-top: 30px;
     }

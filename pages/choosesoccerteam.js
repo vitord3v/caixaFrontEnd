@@ -9,7 +9,7 @@ const Container = styled.div`
     justify-content: center;
     gap: 1rem;
     margin-left: 2rem;
-    margin-top: 100px;
+    margin-top: 150px;
     color: white;
     select{
       font-family: 'Poppins';

@@ -3,3 +3,7 @@ export const textColor = 'white';
 export const bingoColor = '#F09000';
 export const finishColorDisabled = '#975b02';
 export const bingoColorDisabled = '#858585';
+export const contrastColor = 'white';
+export const darkColor = 'black';
+export const sidebarColor = '#1D1932';
+export const contrastColor2 = 'lightgray';

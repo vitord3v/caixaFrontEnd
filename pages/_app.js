@@ -7,6 +7,8 @@ import Sidebar from "../components/Sidebar"
 import BingoContext from '../Context/BingoContext';
 import { useState } from "react";
 import  LoginContext  from '../Context/LoginContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const theme = {
   colors: {
@@ -42,6 +44,7 @@ export default function App({ Component, pageProps }) {
   return (
     <LoginContext.Provider value={{user,setUser, isLogged, setToken, token}}>
       <BingoContext.Provider value={{ selectedNumbers, setSelectedNumbers, games, setGames, playedGames, setPlayedGames, selectedTeam, setSelectedTeam }}>
+        <ToastContainer/>
         <ResetStyle />
         <GlobalStyle />
         <Cabecalho />

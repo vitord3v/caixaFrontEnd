@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { styled } from "styled-components";
-import { bingoColor, bingoColorDisabled } from "../colors/colors";
+import { bingoColor, bingoColorDisabled, contrastColor, darkColor } from "../colors/colors";
 import BingoContext from "../Context/BingoContext";
 
 export default function Cell({name})
@@ -32,7 +32,7 @@ const SCell = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: ${(props) => props.is_selected == 'true' ? bingoColor : Number(props.selected_amount) < 10 ? 'white' : bingoColorDisabled };
+  background-color: ${(props) => props.is_selected == 'true' ? bingoColor : Number(props.selected_amount) < 10 ? contrastColor : bingoColorDisabled };
   display: flex;
   justify-content: center; 
   align-items: center;
@@ -49,12 +49,12 @@ const SCell = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:${(props) => props.is_selected == 'true' ? bingoColor : Number(props.selected_amount) < 10 ? 'white' : bingoColorDisabled };
+    background-color:${(props) => props.is_selected == 'true' ? bingoColor : Number(props.selected_amount) < 10 ? contrastColor : bingoColorDisabled };
     border-radius: 50%;
   }
     }
   .inner{
-    color: black;
+    color: ${darkColor};
     font-size: 19px;
     font-weight: bold;
     font-family: 'Poppins';

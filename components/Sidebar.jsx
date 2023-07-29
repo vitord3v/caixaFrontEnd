@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useContext } from "react";
 import LoginContext from "../Context/LoginContext";
-import { bingoColor } from "../colors/colors";
+import { backgroundColor, bingoColor, contrastColor, contrastColor2, darkColor, sidebarColor } from "../colors/colors";
 import Swal from "sweetalert2";
 
 export default function Sidebar() {
@@ -31,12 +31,15 @@ export default function Sidebar() {
   function handleLogoutClick() {
 
     Swal.fire({
-      title: `<span style="font-family: 'Mulish', sans-serif;font-size: 20px;color:black">Sair?</span>`,
+      title: `<span style="font-family: 'Poppins', sans-serif;font-size: 20px;color:${contrastColor}">Sair?</span>`,
       showCancelButton: true,
-      confirmButtonColor: '#c9c9c9',
+      confirmButtonColor: `${contrastColor2}`,
       cancelButtonColor: `${bingoColor}`,
       confirmButtonText: 'Sim',
+      color:contrastColor,
+      buttonsStyling:true,
       cancelButtonText: 'Cancelar',
+      background:backgroundColor,
       width: 300,
       heightAuto: false,
   }).then((result) => {
@@ -69,7 +72,6 @@ export default function Sidebar() {
             <Image src={logoutIcon.src} alt={`Ícone ${logoutIcon.id}`} width={logoutIcon.width} height={logoutIcon.height} />
             <IconDescription>{logoutIcon.description}</IconDescription>
           </IconItem>
-
         </SidebarContainer>
 
       )}
@@ -84,24 +86,71 @@ const SidebarContainer = styled.div`
   position: fixed;
   height:100%;
   left: 0;
+  z-index: 3;
   top: 0;
   width: 98px;
-  background-color: #1D1932;
+  background-color:${sidebarColor} ;
   padding: 20px;
   padding-top: 120px;
+  *{
+    transition: all 200ms;
+  }
+
+  @media (max-width:800px) {
+    position: fixed;
+    left: 0;
+    top:auto;
+    bottom: 0;
+    width: 100%;
+    height: 98px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width:400px) {
+      justify-content: center;
+      gap: 20px;
+  }
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+    
+    
+  }
+  a{
+    padding-top: 0;
+  }
 `;
 
 const IconItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
   cursor: pointer;
+  min-height: 100px;
+  justify-content: center;
+  min-width: 80px;
+
+  &:hover{
+    *{
+      color:${contrastColor};
+    }
+  }
+
+  @media (max-width:400px) {
+    width: 100%;
+    max-width: 40px;
+    min-width: 40px;
+  }
+  
 `;
 
 const IconDescription = styled.p`
   font-size: 16px;
-  color: #858585;
+  color: ${contrastColor2};
   margin-top: 8px;
   width: 100px;
   display: flex;
@@ -110,4 +159,8 @@ const IconDescription = styled.p`
   font-family: 'Poppins';
   font-weight: 400;
   text-align: center;
+
+  @media (max-width:800px) {
+    display: none;
+  }
 `;

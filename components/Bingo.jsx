@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Cell from './Cell';
 import BetGame from './BetGame';
-import { bingoColor, finishColorDisabled } from '../colors/colors';
+import { bingoColor, contrastColor, contrastColor2, finishColorDisabled } from '../colors/colors';
 import { useContext, useEffect, useRef } from 'react';
 import BingoContext from '../Context/BingoContext';
 import { useRouter } from 'next/router';
@@ -87,6 +87,11 @@ const Grid = styled.div`
   grid-template-rows: repeat(8, 1fr);
   gap: 10px;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+       display: flex;
+       flex-wrap: wrap;
+    }
 `;
 
 
@@ -96,6 +101,11 @@ const Container = styled.div`
     align-items: center;
     justify-content:center;
     position: relative;
+
+    @media (max-width: 1100px) {
+      flex-direction: column;
+      display: flex;
+    }
 
     .main-container{
       display: flex;
@@ -118,12 +128,12 @@ const Container = styled.div`
         font-style: normal;
         font-weight: 600;
         line-height: normal;
-        color: white;
+        color: ${contrastColor};
     }
 
     button {
       background-color: transparent;
-      border: 4px solid white;
+      border: 4px solid ${contrastColor};
       font-family: 'Poppins';
 
       &:disabled{
@@ -152,7 +162,7 @@ const Container = styled.div`
         gap: 10px;
        
         *{
-          color: white;
+          color: ${contrastColor};
           font-size: 20px;
           font-weight: 400;
         }
@@ -170,23 +180,25 @@ const Container = styled.div`
         border: 0;
         font-size: 16px;
         transition: all 200ms;
+        color: ${contrastColor};
 
         &:disabled{
-        color: lightgray;
+        color: ${contrastColor2};
       }
 
         &:enabled{
           &:hover{
-          color: lightgray;
+          color: ${contrastColor2};
         }
         }
       }
 
       .finish{
-        border: 2px solid #B4B4B4;
+        border: 2px solid ${contrastColor2};
       }
 
       .next{
+        color: ${contrastColor};
         background-color: ${bingoColor};
         &:disabled{
           background-color: ${finishColorDisabled};
@@ -198,9 +210,9 @@ const Container = styled.div`
       font-family: 'Poppins';
       width: 235px;
       height: 42px;
-      color:white;
+      color:${contrastColor};
       border-radius: 40px;
-      border: ${(props) => props.len == 10 && props.team == "Selecione seu time" ? `2px solid ${bingoColor}` : "2px solid #B4B4B4"};
+      border: ${(props) => props.len == 10 && props.team == "Selecione seu time" ? `2px solid ${bingoColor}` : `2px solid ${contrastColor2}`};
       background: rgba(217, 217, 217, 0.00);
       padding:10px;
       text-align: center;
@@ -226,5 +238,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
+
+
 
 `;
