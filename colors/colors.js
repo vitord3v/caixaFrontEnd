@@ -1,4 +1,4 @@
-export let backgroundColor = "#131129";
+export let backgroundColor = "#131333";
 export let textColor = 'white';
 export let bingoColor = '#F09000';
 export let finishColorDisabled = '#975b02';

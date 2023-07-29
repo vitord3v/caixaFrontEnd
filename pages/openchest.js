@@ -3,9 +3,9 @@ import styled from "styled-components";
 import SoccerCard from "../components/SoccerCard";
 import { useContext, useEffect, useRef, useState } from "react";
 import BingoContext from "../Context/BingoContext";
-import { contrastColor, finishColorDisabled } from "../colors/colors";
 import ConfettiExplosion from 'react-confetti-explosion';
 import axios from 'axios';
+import ColorsContext from "../Context/ColorsContext";
 
 
 export default function OpenChest () {
@@ -15,6 +15,7 @@ export default function OpenChest () {
     const [openChest,setOpenChest] = useState(false);
     const [slTeam,setSlTeam] = useState("Selecione seu time");
     const [openingChest,setOpeningChest] = useState(false);
+    const {backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2} = useContext(ColorsContext);
     const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames,setSelectedTeam,selectedTeam} = useContext(BingoContext);
     const cards = [
         {
@@ -77,6 +78,103 @@ export default function OpenChest () {
               alert(erro.response.data.message || erro.response.data);
             });
     }
+    
+const Container = styled.div`
+display: flex;
+margin-left:200px;
+font-size: 2rem;
+align-items: center;
+justify-content: center;
+margin-top: 150px;
+margin-bottom: 150px;
+@media (max-width: 1050px) {
+    
+    flex-direction: column;
+   gap: 50px;
+}
+
+select{
+  font-family: 'Poppins';
+  width: 235px;
+  height: 42px;
+  color:${contrastColor};
+  border-radius: 40px;
+  border: 2px solid #B4B4B4;
+  background: rgba(217, 217, 217, 0.00);
+  padding:10px;
+  text-align: center;
+
+
+  
+  cursor: pointer;
+  option{
+    cursor: pointer;
+  }
+
+  *{
+    color:black;
+    font-family: 'Poppins';
+  }
+}
+
+.cards{
+    display: flex;
+    gap: 20px;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+button {
+    background: transparent;
+    border: 2px solid ${contrastColor};
+    font-family: 'Poppins';
+    &:disabled{
+        cursor:not-allowed;
+        background-color: ${finishColorDisabled};
+    }
+}
+`
+
+const ChooseTeamContainer = styled.div`
+display: flex;
+align-items: center;
+flex-direction: column;
+gap: 1rem;
+font-family: 'Poppins';
+
+p{
+    color: ${contrastColor};
+}
+button {
+    background: transparent;
+    border: 2px solid ${contrastColor};
+}
+`
+
+const ChestContainer = styled.div`
+margin-top: 3rem;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+ 
+ P {
+    margin-bottom: 1rem;
+    font-family: 'Poppins';
+    color: ${contrastColor};
+ }
+
+ button {
+    background-color:#f09000;
+    border: 0;
+ }
+`
 
     return (
         <>
@@ -116,7 +214,7 @@ export default function OpenChest () {
                         <p>2º</p>
                         <p> Abra o seu Baú </p>
                         <Image src='/chest.png' width='362' height='266' alt="Baú dourado" />
-                        <button disabled={slTeam == "Selecione seu time" ? true : playedGames >= 10 && !openingChest ? false : true} onClick={open}>
+                        <button disabled={slTeam == "Selecione seu time" ? true : playedGames >= -1 && !openingChest ? false : true} onClick={open}>
                             { slTeam == "Selecione seu time" ? "Selecione seu time" : playedGames >= 10 && !openingChest ? "Abrir" : "Nenhum baú a abrir"}
                             
                         </button>
@@ -133,100 +231,3 @@ export default function OpenChest () {
     )
 }
 
-
-const Container = styled.div`
-    display: flex;
-    margin-left:200px;
-    font-size: 2rem;
-    align-items: center;
-    justify-content: center;
-    margin-top: 150px;
-    margin-bottom: 150px;
-    @media (max-width: 1050px) {
-        
-        flex-direction: column;
-       gap: 50px;
-    }
-
-    select{
-      font-family: 'Poppins';
-      width: 235px;
-      height: 42px;
-      color:${contrastColor};
-      border-radius: 40px;
-      border: 2px solid #B4B4B4;
-      background: rgba(217, 217, 217, 0.00);
-      padding:10px;
-      text-align: center;
-
-    
-      
-      cursor: pointer;
-      option{
-        cursor: pointer;
-      }
-
-      *{
-        color:black;
-        font-family: 'Poppins';
-      }
-    }
-
-    .cards{
-        display: flex;
-        gap: 20px;
-    }
-
-    .main{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    
-
-    button {
-        background: transparent;
-        border: 2px solid ${contrastColor};
-        font-family: 'Poppins';
-        &:disabled{
-            cursor:not-allowed;
-            background-color: ${finishColorDisabled};
-        }
-    }
-`
-
-const ChooseTeamContainer = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 1rem;
-    font-family: 'Poppins';
-    
-    p{
-        color: ${contrastColor};
-    }
-    button {
-        background: transparent;
-        border: 2px solid ${contrastColor};
-    }
-`
-
-const ChestContainer = styled.div`
-    margin-top: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-     
-     P {
-        margin-bottom: 1rem;
-        font-family: 'Poppins';
-        color: ${contrastColor};
-     }
-
-     button {
-        background-color:#f09000;
-        border: 0;
-     }
-`

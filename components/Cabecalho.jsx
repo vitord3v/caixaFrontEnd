@@ -6,14 +6,141 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import  LoginContext from "../Context/LoginContext";
-import { backgroundColor, bingoColor, bingoColorDisabled, contrastColor, contrastColor2, darkColor, sidebarColor } from "../colors/colors";
+import ColorsContext from "../Context/ColorsContext";
 
 export default function Cabeçalho() {
 
   const { isLogged, setToken, token,user,setUser } = useContext(LoginContext);
+  const {
+    backgroundColor,
+    textColor,
+    bingoColor,
+    finishColorDisabled,
+    bingoColorDisabled,
+    contrastColor,
+    darkColor,
+    sidebarColor,
+    contrastColor2,
+    handleBackgroundColorChange,
+    handleTextColorChange,
+    handleBingoColorChange,
+    handleFinishColorDisabledChange,
+    handleBingoColorDisabledChange,
+    handleContrastColorChange,
+    handleDarkColorChange,
+    handleSidebarColorChange,
+    handleContrastColor2Change,
+  } = useContext(ColorsContext);
+
+
+  const ColorConfigContainer = styled.div`
+  background-color: ${sidebarColor};
+  width: 200px;
+  height: auto;
+  position: fixed;
+  right: 0;
+  z-index: 4;
+  top: 125px;
+  .color-cont{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins';
+    gap: 10px;
+    width: 100%;
+    label{
+      margin-left: 5px;
+      margin-top: 5px;
+      color:${contrastColor};
+    }
+    input{
+      background-color: ${backgroundColor};
+      border: 0;
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+  }
+  }
+  
+  
+  `;
+  
+  const PageContainerTopo = styled.div`
+      display: flex;
+      justify-content:space-around;
+      align-items: center;
+      height: 120px;
+      background-color: #131129;
+      width:calc(100% - 98px);
+      box-shadow: 0px 4px 4px 0px #00000026;
+      position: fixed;
+      top: 0;
+      right:0;
+      margin: 0;
+      z-index: 3;
+  
+      img{
+        cursor: pointer;
+      }
+  
+      @media (max-width:800px) {
+        width:calc(100%);
+    }
+  `
+  const Button = styled.button`
+      width: 140px;
+      height: 42px;
+      border-radius: 40px;
+      border: 2px solid ${contrastColor2};
+      display: flex;
+      color: ${contrastColor2};
+      align-items: center;
+      justify-content: center;
+      background-color: #131129;
+      font-size: 16px;
+      transition: all 200ms;
+  `
+  
+  const MessageUser = styled.h1`
+      font-family: 'Poppins';
+      font-weight: 400;
+      font-size: 20px;
+      color: ${contrastColor};
+      margin-left:60px;
+  `
+  const TracosLogo = styled.div`
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+      width: 300px;
+      @media (max-width:800px) {
+        justify-content:flex-start;
+    }
+      img{
+        @media (max-width:800px) {
+        width: 80px !important;
+        height: 5px !important;
+    }
+  }
+  
+  `
+  const Container = styled.div`
+      height: auto;
+      width:300px;
+      img{
+        @media (max-width:800px) {
+            width: 200px;
+            height: 40px;
+        }
+      }
+  
+      @media (max-width:800px) {
+        width: 200px;
+    }
+  `
   const [showColorConfig,setShowColorConfig] = useState(false);
 
   const router = useRouter();
+  const showHeader = router.pathname !== "/login" && router.pathname !== "/cadastro";
 
   useEffect(() => {
     const localStorageUser = localStorage.getItem("user");
@@ -28,8 +155,7 @@ export default function Cabeçalho() {
   function fazerLogin() {
     router.push("/login");
 }
-  const showHeader = router.pathname !== "/login" && router.pathname !== "/cadastro";
-
+  
   return (
     <>
       {showHeader && (
@@ -53,31 +179,31 @@ export default function Cabeçalho() {
       <ColorConfigContainer>
         <div className="color-cont">
           <label htmlFor="main-color">Principal</label>
-          <input id="main-color" defaultValue={contrastColor} name="main-color" type="color" />
+          <input id="main-color" value={contrastColor}onChange={(e) => handleContrastColorChange(e.target.value)} name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Secundaria</label>
-          <input id="main-color" defaultValue={contrastColor2} name="main-color" type="color" />
+          <input id="main-color" value={contrastColor2} onChange={(e) => handleContrastColor2Change(e.target.value)}name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Botão selecionado</label>
-          <input id="main-color" defaultValue={bingoColor} name="main-color" type="color" />
+          <input id="main-color" value={bingoColor} onChange={(e) => handleBingoColorChange(e.target.value)}name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Botão desligado</label>
-          <input id="main-color" defaultValue={bingoColorDisabled} name="main-color" type="color" />
+          <input id="main-color" value={bingoColorDisabled} onChange={(e) => handleBingoColorDisabledChange(e.target.value)} name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Fundo</label>
-          <input id="main-color" defaultValue={backgroundColor} name="main-color" type="color" />
+          <input id="main-color" value={backgroundColor} onChange={(e) => handleBackgroundColorChange(e.target.value)} name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Sidebar</label>
-          <input id="main-color" defaultValue={sidebarColor} name="main-color" type="color" />
+          <input id="main-color" value={sidebarColor} onChange={(e) => handleSidebarColorChange(e.target.value)}name="main-color" type="color" />
         </div>
         <div className="color-cont">
           <label htmlFor="main-color">Escuras</label>
-          <input id="main-color" defaultValue={darkColor} name="main-color" type="color" />
+          <input id="main-color" value={darkColor} onChange={(e) => handleDarkColorChange(e.target.value)}name="main-color" type="color" />
         </div>
       </ColorConfigContainer>
     }
@@ -87,107 +213,4 @@ export default function Cabeçalho() {
 
 // onChange={(e) => contrastColor = e.target.value}
 
-const ColorConfigContainer = styled.div`
-background-color: ${sidebarColor};
-width: 200px;
-height: auto;
-position: fixed;
-right: 0;
-z-index: 4;
-top: 125px;
-.color-cont{
-  display: flex;
-  flex-direction: column;
-  font-family: 'Poppins';
-  gap: 10px;
-  width: 100%;
-  label{
-    margin-left: 5px;
-    margin-top: 5px;
-    color:${contrastColor};
-  }
-  input{
-    background-color: ${backgroundColor};
-    border: 0;
-  width: 100%;
-  height: 40px;
-  padding: 5px;
-}
-}
 
-
-`;
-
-const PageContainerTopo = styled.div`
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    height: 120px;
-    background-color: #131129;
-    width:calc(100% - 98px);
-    box-shadow: 0px 4px 4px 0px #00000026;
-    position: fixed;
-    top: 0;
-    right:0;
-    margin: 0;
-    z-index: 3;
-
-    img{
-      cursor: pointer;
-    }
-
-    @media (max-width:800px) {
-      width:calc(100%);
-  }
-`
-const Button = styled.button`
-    width: 140px;
-    height: 42px;
-    border-radius: 40px;
-    border: 2px solid ${contrastColor2};
-    display: flex;
-    color: ${contrastColor2};
-    align-items: center;
-    justify-content: center;
-    background-color: #131129;
-    font-size: 16px;
-    transition: all 200ms;
-`
-
-const MessageUser = styled.h1`
-    font-family: 'Poppins';
-    font-weight: 400;
-    font-size: 20px;
-    color: ${contrastColor};
-    margin-left:60px;
-`
-const TracosLogo = styled.div`
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    width: 300px;
-    @media (max-width:800px) {
-      justify-content:flex-start;
-  }
-    img{
-      @media (max-width:800px) {
-      width: 80px !important;
-      height: 5px !important;
-  }
-}
-
-`
-const Container = styled.div`
-    height: auto;
-    width:300px;
-    img{
-      @media (max-width:800px) {
-          width: 200px;
-          height: 40px;
-      }
-    }
-
-    @media (max-width:800px) {
-      width: 200px;
-  }
-`

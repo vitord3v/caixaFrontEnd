@@ -4,9 +4,13 @@ import OpenChest from "../components/OpenChest";
 import Bingo from "../components/Bingo";
 import { useContext } from "react";
 import BingoContext from "../Context/BingoContext";
-import { contrastColor } from "../colors/colors";
+import ColorsContext from "../Context/ColorsContext";
 
-const Container = styled.div`
+
+export default function Home() {
+    const {backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2} = useContext(ColorsContext);
+    const { selectedNumbers, setSelectedNumbers, games, setGames, playedGames, setPlayedGames } = useContext(BingoContext);
+    const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,33 +102,34 @@ const ChestContainer = styled.div`
         height: auto;
     }
 `
-
-export default function Home() {
-    const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
-    return(
+    return (
         <PageContainer>
-        <Container>
-            <BetContainer>
-                <div className="inner2">
-                    <h1>Suas Apostas</h1>
-                    <p>
-                        {playedGames.toString()}/10
-                    </p>
-                </div>
-            </BetContainer>
-            
-            <ChestContainer>
-                <p>
-                    Faça 10 apostas no timemania e abra um baú com NFT’s exclusivos!
-                </p>
-                <Image src='/chest.png' width='169' height='124' alt="Baú de ouro para abrir sua caixa" />
-                <OpenChest />
-            </ChestContainer>
-            
-        </Container>
+            <Container>
+                <BetContainer>
+                    <div className="inner2">
+                        <h1>Suas Apostas</h1>
+                        <p>
+                            {playedGames.toString()}/10
+                        </p>
+                    </div>
+                </BetContainer>
 
-        
-        <Bingo/>
+                <ChestContainer>
+                    <p>
+                        Faça 10 apostas no timemania e abra um baú com NFT’s exclusivos!
+                    </p>
+                    <Image src='/chest.png' width='169' height='124' alt="Baú de ouro para abrir sua caixa" />
+                    <OpenChest />
+                </ChestContainer>
+
+            </Container>
+
+
+            <Bingo />
         </PageContainer>
     );
+
+    
 }
+
+

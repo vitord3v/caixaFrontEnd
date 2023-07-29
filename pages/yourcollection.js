@@ -1,12 +1,18 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import Web3 from 'web3';
 import SoccerCard from "../components/SoccerCard";
 import styled from "styled-components";
-import { bingoColor, contrastColor } from '../colors/colors';
-
 import { Alchemy, Network } from "alchemy-sdk";
+import ColorsContext from '../Context/ColorsContext';
 
-const Container = styled.div`
+
+function YourCollection() {
+    const {backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2} = useContext(ColorsContext);
+
+    const [userAddress, setUserAddress] = useState(null);
+    const [nftsEspecificacoes, setNftsEspecificacoes] = useState([]);
+
+    const Container = styled.div`
     display: flex;
     gap: 2rem;
     flex-direction: column;
@@ -122,10 +128,6 @@ const Container1 = styled.div`
         }
     }
 `
-function YourCollection() {
-
-    const [userAddress, setUserAddress] = useState(null);
-    const [nftsEspecificacoes, setNftsEspecificacoes] = useState([]);
 
     const getNftByAdress = async () => {
 

@@ -9,14 +9,15 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useContext } from "react";
 import LoginContext from "../Context/LoginContext";
-import { backgroundColor, bingoColor, contrastColor, contrastColor2, darkColor, sidebarColor } from "../colors/colors";
 import Swal from "sweetalert2";
+import ColorsContext from "../Context/ColorsContext";
 
 export default function Sidebar() {
 
   const router = useRouter();
 
   const {setUser} = useContext(LoginContext);
+  const {backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2} = useContext(ColorsContext);
   const showSidebar = router.pathname !== "/login" && router.pathname !== "/cadastro";
 
   const icons = [
@@ -53,36 +54,7 @@ export default function Sidebar() {
       
   }
 
-  return (
-    <>
-      {showSidebar && (
-
-        <SidebarContainer>
-          {icons.map((icon) => (
-            <Link key={icon.id} href={icon.redirect}>
-              <IconItem key={icon.id}>
-                <Image src={icon.src} alt={`Ícone ${icon.id}`} />
-                <IconDescription>{icon.description}</IconDescription>
-              </IconItem>
-            </Link>
-
-          ))}
-
-          <IconItem onClick={handleLogoutClick} >
-            <Image src={logoutIcon.src} alt={`Ícone ${logoutIcon.id}`} width={logoutIcon.width} height={logoutIcon.height} />
-            <IconDescription>{logoutIcon.description}</IconDescription>
-          </IconItem>
-        </SidebarContainer>
-
-      )}
-    </>
-
-
-
-  )
-}
-
-const SidebarContainer = styled.div`
+  const SidebarContainer = styled.div`
   position: fixed;
   height:100%;
   left: 0;
@@ -164,3 +136,34 @@ const IconDescription = styled.p`
     display: none;
   }
 `;
+
+  return (
+    <>
+      {showSidebar && (
+
+        <SidebarContainer>
+          {icons.map((icon) => (
+            <Link key={icon.id} href={icon.redirect}>
+              <IconItem key={icon.id}>
+                <Image src={icon.src} alt={`Ícone ${icon.id}`} />
+                <IconDescription>{icon.description}</IconDescription>
+              </IconItem>
+            </Link>
+
+          ))}
+
+          <IconItem onClick={handleLogoutClick} >
+            <Image src={logoutIcon.src} alt={`Ícone ${logoutIcon.id}`} width={logoutIcon.width} height={logoutIcon.height} />
+            <IconDescription>{logoutIcon.description}</IconDescription>
+          </IconItem>
+        </SidebarContainer>
+
+      )}
+    </>
+
+
+
+  )
+}
+
+

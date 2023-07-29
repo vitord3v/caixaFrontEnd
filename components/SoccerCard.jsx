@@ -1,35 +1,12 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import back from '../img/back.png';
-
-import { backgroundColor } from '../colors/colors';
-import { contrastColor } from '../colors/colors';
+import ColorsContext from '../Context/ColorsContext';
+import { useContext } from 'react';
 
 function SoccerCard ({name, turned,source,alt_text,quantidade, show}) {
-
-    return (
-        <Container>
-        <Card turned={turned.toString()}>
-            <div className='front'>
-                <Image src={ source !=='' ? source.toString() : '/placeholder.png'} width='216' height='240' alt={alt_text} />
-                <p>{name}</p>
-                <h2>Qtd: {quantidade}</h2>
-            </div>
-            <div className='back'>
-                <Image src={back} width='216' height='240' alt={alt_text}/>
-            </div>
-        </Card>
-        {show && 
-        <Buttoncerto>Sacar</Buttoncerto>
-        }
-        </Container>
-        
-    )
-}
-
-export default SoccerCard;
-
-const Container = styled.div`
+    const {backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2} = useContext(ColorsContext);
+    const Container = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -139,3 +116,25 @@ const Card = styled.div`
     }
 
 `
+    return (
+        <Container>
+        <Card turned={turned.toString()}>
+            <div className='front'>
+                <Image src={ source !=='' ? source.toString() : '/placeholder.png'} width='216' height='240' alt={alt_text} />
+                <p>{name}</p>
+                {show && <h2>Qtd: {quantidade}</h2>}
+            </div>
+            <div className='back'>
+                <Image src={back} width='216' height='240' alt={alt_text}/>
+            </div>
+        </Card>
+        {show && 
+        <Buttoncerto>Sacar</Buttoncerto>
+        }
+        </Container>
+        
+    )
+}
+
+export default SoccerCard;
+

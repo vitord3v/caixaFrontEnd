@@ -1,10 +1,16 @@
 import styled from 'styled-components'
-import { backgroundColor, contrastColor, darkColor } from '../colors/colors';
 import { useContext } from 'react';
 import BingoContext from '../Context/BingoContext';
 import { useRouter } from 'next/router';
+import ColorsContext from '../Context/ColorsContext';
 
-const OpenChestContainer = styled.div`
+
+function OpenChest () {
+    const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
+    const {backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2} = useContext(ColorsContext);
+    const router = useRouter();
+
+    const OpenChestContainer = styled.div`
     bottom: -80px;
     right: 0;
     display: flex;
@@ -38,9 +44,6 @@ const OpenChestContainer = styled.div`
         }
     }
 `
-function OpenChest () {
-    const {selectedNumbers,setSelectedNumbers,games,setGames,playedGames,setPlayedGames} = useContext(BingoContext);
-    const router = useRouter();
 
    if(playedGames >= 10)
    {
