@@ -5,7 +5,7 @@ import back from '../img/back.png';
 import { backgroundColor } from '../colors/colors';
 import { contrastColor } from '../colors/colors';
 
-function SoccerCard ({name, turned,source,alt_text,quantidade}) {
+function SoccerCard ({name, turned,source,alt_text,quantidade, show}) {
 
     return (
         <Container>
@@ -19,7 +19,9 @@ function SoccerCard ({name, turned,source,alt_text,quantidade}) {
                 <Image src={back} width='216' height='240' alt={alt_text}/>
             </div>
         </Card>
+        {show && 
         <Buttoncerto>Sacar</Buttoncerto>
+        }
         </Container>
         
     )

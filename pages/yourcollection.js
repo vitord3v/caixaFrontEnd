@@ -14,6 +14,7 @@ const Container = styled.div`
     justify-content: center;
     margin-left: 100px;
     margin-top:75px;
+    margin-bottom:75px;
 
     @media (max-width: 1050px) {
         
@@ -191,7 +192,7 @@ function YourCollection() {
                 <div className='cards'>
                     {nftsEspecificacoes.map((nfts) => (
 
-                        <SoccerCard key={nfts.tokenId} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
+                        <SoccerCard key={nfts.tokenId} show={true} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
 
                     ))}
 
@@ -207,7 +208,7 @@ function YourCollection() {
                 <div className='cards'>
                     {nftsEspecificacoes.map((nfts) => (
 
-                        <SoccerCard key={nfts.tokenId} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
+                        <SoccerCard key={nfts.tokenId} show={false} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
 
                     ))}
 
