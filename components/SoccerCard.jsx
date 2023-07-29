@@ -110,6 +110,7 @@ const Card = styled.div`
             position: absolute;
             bottom: 18px;
             color:#858585;
+            font-family: 'Poppins';
         }
     }
 

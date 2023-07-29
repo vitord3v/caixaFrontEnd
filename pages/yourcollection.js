@@ -13,8 +13,64 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     margin-left: 100px;
-    margin-bottom:75px;
     margin-top:75px;
+
+    @media (max-width: 1050px) {
+        
+        flex-direction: column;
+       gap: 50px;
+    }
+
+    .head{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width:894px;
+
+        .wallet{
+            color: ${contrastColor};
+            font-family: 'Poppins';
+        }
+    }
+
+    h1{
+        color: ${contrastColor};
+        font-family: 'Poppins';
+        white-space: nowrap;
+    }
+
+    .walletButton {
+        background-color: #F09000;
+        width:250px;
+    }
+
+    .cards{
+        display: flex;
+        flex-wrap:wrap;
+        gap: 10px;
+        width:894px;
+        height:auto;
+
+    }
+
+    button{
+        transition: all 200ms;
+        border: 1px solid transparent;
+        &:hover{
+            color: ${bingoColor};
+            background-color: ${contrastColor};
+            border: 1px solid ${bingoColor};
+        }
+    }
+`
+const Container1 = styled.div`
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 100px;
+    margin-top:180px;
 
     @media (max-width: 1050px) {
         
@@ -127,7 +183,7 @@ function YourCollection() {
 
     return (
         <>
-        <Container>
+        <Container1>
                 <div className='head'>
                     <h1> Minha Coleção </h1>
                 </div>
@@ -140,7 +196,7 @@ function YourCollection() {
                     ))}
 
                 </div>
-            </Container>
+            </Container1>
 
             <Container>
                 <div className='head'>
