@@ -4,8 +4,20 @@ import back from '../img/back.png';
 import ColorsContext from '../Context/ColorsContext';
 import { useContext } from 'react';
 import { backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2 } from "../colors/colors";
+import axios from 'axios';
 
-function SoccerCard ({name, turned,source,alt_text,quantidade, show}) {
+function SoccerCard ({card_id,name, turned,source,alt_text,quantidade, show}) {
+
+    function retrieve()
+    {
+        const user = localStorage.getItem("token");
+        axios.delete(`${process.env.NEXT_PUBLIC_URL}/remove-card/${user}/${card_id}`)
+        .then((res)=>{
+            window.location.reload();
+        }).catch((err)=>{
+            alert("Erro ao sacar a carta");
+        });
+    }
    
     return (
         <Container>
@@ -20,7 +32,7 @@ function SoccerCard ({name, turned,source,alt_text,quantidade, show}) {
             </div>
         </Card>
         {show && 
-        <Buttoncerto>Sacar</Buttoncerto>
+        <Buttoncerto onClick={retrieve}>Sacar</Buttoncerto>
         }
         </Container>
         
@@ -37,17 +49,17 @@ gap: 20px;
 `
 
 const Buttoncerto = styled.button`
-width: 140px;
-height: 42px;
-border-radius: 40px;
-display: flex;
-color: white;
-border: 2px solid white !important;
-background-color:${backgroundColor};
-align-items: center;
+    width: 140px !important;
+    height: 42px !important;
+    border-radius: 40px !important;
+    display: flex;
+    color: white;
+    border: 2px solid white !important;
+    background-color:${backgroundColor};
+    align-items: center;
 
-justify-content: center;
-font-size: 16px;
+    justify-content: center;
+    font-size: 16px;
 `
 
 const Card = styled.div`
@@ -71,6 +83,8 @@ img{
     user-select: none;
     pointer-events: none;
     border-radius:40px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 p{

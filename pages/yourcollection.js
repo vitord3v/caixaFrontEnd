@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Alchemy, Network } from "alchemy-sdk";
 import ColorsContext from '../Context/ColorsContext';
 import { backgroundColor,textColor,bingoColor,finishColorDisabled,bingoColorDisabled,contrastColor,darkColor,sidebarColor,contrastColor2 } from "../colors/colors";
+import axios from 'axios';
 
 
 function YourCollection() {
@@ -12,6 +13,7 @@ function YourCollection() {
 
     const [userAddress, setUserAddress] = useState(null);
     const [nftsEspecificacoes, setNftsEspecificacoes] = useState([]);
+    const [myCards, setMyCards] = useState([]);
 
     const getNftByAdress = async () => {
 
@@ -34,7 +36,22 @@ function YourCollection() {
         }
     }
 
-    useEffect(() => { getNftByAdress() }, [userAddress])
+    useEffect(() => { 
+        getNftByAdress();
+
+        if(localStorage.getItem("token"))
+        {
+            axios.get(`${process.env.NEXT_PUBLIC_URL}/getItensBau/${localStorage.getItem('token')}`)
+            .then((res) =>{
+                console.log(res.data);
+                setMyCards(res.data);
+            })
+            .catch(err => {
+
+            });
+        }
+    
+    }, [userAddress])
 
     const connectWallet = useCallback(async () => {
         if (window.ethereum) {
@@ -76,9 +93,9 @@ function YourCollection() {
                 </div>
 
                 <div className='cards'>
-                    {nftsEspecificacoes.map((nfts) => (
+                    {myCards.map((card,index) => (
 
-                        <SoccerCard key={nfts.tokenId} show={true} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
+                        <SoccerCard key={card.id} card_id={card.id} show={true} quantidade={1} turned={false} name={card.name} source={card.source} alt_text={card.alt} />
 
                     ))}
 
