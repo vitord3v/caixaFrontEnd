@@ -88,7 +88,7 @@ function YourCollection() {
         <Wrap>
                 <Container>
                     <div className='head'>
-                        <h1> Coleção na sua Carteira </h1>
+                        
                         {userAddress ? <>
                         <button className='walletButton' disabled='true' > Carteira Conectada </button> 
                         <h2> Carteira conectada com endereço: <br/> {userAddress}</h2> 
@@ -96,16 +96,16 @@ function YourCollection() {
                         </>
                         : 
                         <button className='walletButton' onClick={connectWallet}>Conectar Carteira</button>}
+                        <h1> Coleção na sua Carteira </h1>
                     </div>
     
                 <div className='cards'>
-                    {myCards.map((card,index) => (
+                {nftsEspecificacoes.map((nfts) => (
 
-                        <SoccerCard key={card.id} card_id={card.id} show={true} quantidade={1} turned={false} name={card.name} source={card.source} alt_text={card.alt} />
+<SoccerCard key={nfts.tokenId} show={false} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
 
-
-                    ))}
-
+))}
+                   
                 </div>
             </Container>
 
@@ -114,11 +114,13 @@ function YourCollection() {
                 </div>
                 <h1>Minha coleção</h1>
                 <div className='cards'>
-                    {nftsEspecificacoes.map((nfts) => (
+                {myCards.map((card,index) => (
 
-                        <SoccerCard key={nfts.tokenId} show={false} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
+<SoccerCard key={card.id} card_id={card.id} show={true} quantidade={1} turned={false} name={card.name} source={card.source} alt_text={card.alt} />
 
-                    ))}
+
+))}
+
 
                 </div>
             </Container1>
@@ -158,7 +160,8 @@ const Wrap = styled.div`
         gap:2rem;
         align-items: center;
         justify-content: space-around;
-        width:894px;
+        max-width:894px;
+        width: 100%;
 
         text-align: center;
 
@@ -197,8 +200,9 @@ const Wrap = styled.div`
     .cards{
         display: flex;
         flex-wrap:wrap;
-        gap: 10px;
-        width:894px;
+        gap: 15px;
+        max-width:894px;
+        width: 100%;
         height:auto;
 
         @media (max-width:800px) {
@@ -235,7 +239,8 @@ const Container1 = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-around;
-        width:894px;
+        max-width:894px;
+        width: 100%;
         justify-content: center;
 
         .wallet{
@@ -261,7 +266,8 @@ const Container1 = styled.div`
         display: flex;
         flex-wrap:wrap;
         gap: 10px;
-        width:894px;
+        max-width:894px;
+        width: 100%;
         height:auto;
 
         @media (max-width:800px) {
