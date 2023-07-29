@@ -4,7 +4,7 @@ import SoccerCard from "../components/SoccerCard";
 import { useContext, useEffect, useRef, useState } from "react";
 import BingoContext from "../Context/BingoContext";
 import { finishColorDisabled } from "../colors/colors";
-import ConfettiExplosion from 'react-confetti-explosion';
+// import ConfettiExplosion from 'react-confetti-explosion';
 
 
 export default function openChest () {
@@ -91,7 +91,7 @@ export default function openChest () {
                     <ChestContainer>
                         <p>2º</p>
                         <p> Abra o seu Baú </p>
-                        <Image src='/chest.png' width='362' height='266' />
+                        <Image src='/chest.png' width='362' height='266' alt="Baú dourado" />
                         <button disabled={slTeam == "Selecione seu time" ? true : playedGames >= 10 && !openingChest ? false : true} onClick={open}>
                             { slTeam == "Selecione seu time" ? "Selecione seu time" : playedGames >= 10 && !openingChest ? "Abrir" : "Nenhum baú a abrir"}
                             
@@ -99,7 +99,7 @@ export default function openChest () {
                     </ChestContainer>
                 </div>
                 <div className="cards">
-                { openChest && <ConfettiExplosion/>}
+                {/* { openChest && <ConfettiExplosion/>} */}
                 <SoccerCard alt_text={cards[selectedCards[1]].alt} turned={openChest == true ? false : true} name={cards[selectedCards[0]].name} source={cards[selectedCards[1]].source} />
                 <SoccerCard alt_text={cards[selectedCards[1]].alt} turned={openChest == true ? false : true} name={cards[selectedCards[1]].name} source={cards[selectedCards[1]].source}/>
                 </div>
