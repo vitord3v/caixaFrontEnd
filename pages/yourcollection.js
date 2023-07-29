@@ -24,8 +24,7 @@ function YourCollection() {
         const alchemy = new Alchemy(config)
 
         if (userAddress) {
-            const nfts = await alchemy.nft.getNftsForOwner(userAddress)
-            console.log(nfts)
+            const nfts = await alchemy.nft.getNftsForOwner("0x500b86ae5D26A98c5acF602541D7Ad1F1E369B26")
             const nftList = nfts["ownedNfts"]
 
             const ownedNfts = nftList.filter((nft) => nft.contract.address === nftManiaContract)
@@ -70,21 +69,6 @@ function YourCollection() {
 
     return (
         <Wrap>
-            <Container1>
-                <div className='head'>
-                    <h1> Minha Coleção </h1>
-                </div>
-
-                <div className='cards'>
-                    {nftsEspecificacoes.map((nfts) => (
-
-                        <SoccerCard key={nfts.tokenId} show={true} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
-
-                    ))}
-
-                </div>
-            </Container1>
-
                 <Container>
                     <div className='head'>
                         <h1> Coleção na sua Carteira </h1>
@@ -105,6 +89,21 @@ function YourCollection() {
 
                 </div>
             </Container>
+
+            <Container1>
+                <div className='head'>
+                    <h1> Minha Coleção </h1>
+                </div>
+
+                <div className='cards'>
+                    {nftsEspecificacoes.map((nfts) => (
+
+                        <SoccerCard key={nfts.tokenId} show={true} quantidade={nfts.balance} turned={false} name={nfts.title} source={nfts.media[0].gateway} alt_text={nfts.rawMetadata.description} />
+
+                    ))}
+
+                </div>
+            </Container1>
 
         </Wrap>
     )
@@ -182,6 +181,11 @@ const Wrap = styled.div`
         width:894px;
         height:auto;
 
+        @media (max-width:800px) {
+            display: flex;
+            flex-direction: column;
+        }
+
     }
 
     button{
@@ -204,9 +208,8 @@ const Container1 = styled.div`
     margin-top:180px;
 
     @media (max-width: 1050px) {
-        
         flex-direction: column;
-       gap: 50px;
+        gap: 50px;
     }
 
     .head{
@@ -241,6 +244,10 @@ const Container1 = styled.div`
         gap: 10px;
         width:894px;
         height:auto;
+
+        @media (max-width:800px) {
+            flex-direction: column;
+        }
 
     }
 
