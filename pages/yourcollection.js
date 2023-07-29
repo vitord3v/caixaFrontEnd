@@ -92,7 +92,6 @@ function YourCollection() {
 
             <Container1>
                 <div className='head'>
-                    <h1> Minha Coleção </h1>
                 </div>
 
                 <div className='cards'>
