@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Cell from './Cell';
 import BetGame from './BetGame';
-import { bingoColor, contrastColor, contrastColor2, finishColorDisabled } from '../colors/colors';
+import { bingoColor, bingoColorDisabled, contrastColor, contrastColor2, finishColorDisabled } from '../colors/colors';
 import { useContext, useEffect, useRef } from 'react';
 import BingoContext from '../Context/BingoContext';
 import { useRouter } from 'next/router';
@@ -201,7 +201,7 @@ const Container = styled.div`
         color: ${contrastColor};
         background-color: ${bingoColor};
         &:disabled{
-          background-color: ${finishColorDisabled};
+          background-color: ${bingoColorDisabled};
         }
       }
     }

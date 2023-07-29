@@ -57,7 +57,7 @@ function handleChangeDataNascimento(e) {
         password: senha
       };
 
-      const promise =  axios.post("http://localhost:5000/cadastro", obj);
+      const promise =  axios.post(`${process.env.VITE_API_URL}/cadastro`, obj);
 
       promise.then(resposta => {
         alert('Você foi cadastrado com sucesso!')
